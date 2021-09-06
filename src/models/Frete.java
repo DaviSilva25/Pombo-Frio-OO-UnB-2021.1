@@ -2,21 +2,21 @@ package models;
 
 public class Frete {
 
-    private Venda enderecoC;
+    private Cliente enderecoC;
     private Loja enderecoLoja;
     private double valorDoFrete;
 
-    public Frete(Venda enderecoC, Loja enderecoLoja, double valorDoFrete) {
+    public Frete(Cliente enderecoC, Loja enderecoLoja, double valorDoFrete) {
         this.enderecoC = enderecoC;
         this.enderecoLoja = enderecoLoja;
         this.valorDoFrete = valorDoFrete;
     }
 
-    public Venda getEnderecoC() {
+    public Cliente getEnderecoC() {
         return enderecoC;
     }
 
-    public void setEnderecoC(Venda enderecoC) {
+    public void setEnderecoC(Cliente enderecoC) {
         this.enderecoC = enderecoC;
     }
 
