@@ -1,6 +1,6 @@
 package models;
 
-import java.util.date;
+import java.util.Date;
 
 public class Cliente {
 
@@ -38,11 +38,11 @@ public class Cliente {
     }
 
     public Date getDataDeNasc() {
-        return dataDeNasc;
+        return dataNasc;
     }
 
     public void setDataDeNasc(Date dataDeNasc) {
-        this.dataDeNasc = dataDeNasc;
+        this.dataNasc = dataDeNasc;
     }
 
     public Endereco getEndereco() {
