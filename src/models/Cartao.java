@@ -3,32 +3,32 @@ package models;
 import java.util.Date;
 
 public class Cartao {
-    private String nomeCartao;
-    private String numeroCartao;
+    private String nome;
+    private String numero;
     private String cvv;
-    private Date data;
+    private String dataVencimento;
 
-    public Cartao(String nomeCartao, String numeroCartao, String cvv, Date data) {
-        this.nomeCartao = nomeCartao;
-        this.numeroCartao = numeroCartao;
+    public Cartao(String nome, String numero, String cvv, String dataVencimento) {
+        this.nome = nome;
+        this.numero = numero;
         this.cvv = cvv;
-        this.data = data;
+        this.dataVencimento = dataVencimento;
     }
 
-    public String getNomeCartao() {
-        return nomeCartao;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeCartao(String nomeCartao) {
-        this.nomeCartao = nomeCartao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getNumeroCartao() {
-        return numeroCartao;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setNumeroCartao(String numeroCartao) {
-        this.numeroCartao = numeroCartao;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     public String getCvv() {
@@ -39,11 +39,11 @@ public class Cartao {
         this.cvv = cvv;
     }
 
-    public Date getData() {
-        return data;
+    public String getDataVencimento() {
+        return dataVencimento;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setDataVencimento(String dataVencimento) {
+        this.dataVencimento = dataVencimento;
     }
 }

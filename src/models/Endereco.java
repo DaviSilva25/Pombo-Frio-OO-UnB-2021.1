@@ -1,24 +1,24 @@
 package models;
 
 public class Endereco {
-    private String siglaEstado;
+    private String uf;
     private String cidade;
     private String bairro;
     private String logradouro;
 
-    public Endereco(String siglaEstado, String cidade, String bairro, String logradouro) {
-        this.siglaEstado = siglaEstado;
+    public Endereco(String uf, String cidade, String bairro, String logradouro) {
+        this.uf = uf;
         this.cidade = cidade;
         this.bairro = bairro;
         this.logradouro = logradouro;
     }
 
-    public String getSiglaEstado() {
-        return siglaEstado;
+    public String getUf() {
+        return uf;
     }
 
-    public void setSiglaEstado(String siglaEstado) {
-        this.siglaEstado = siglaEstado;
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
     public String getCidade() {

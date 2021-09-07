@@ -2,37 +2,37 @@ package models;
 
 public class Carrinho {
 
-    private Cliente clienteC;
-    private Estoque estoqueC;
-    private int quantRetiradaEstoque;
+    private Cliente cliente;
+    private Loja produto;
+    private int quantItens;
 
-    public Carrinho(Cliente clienteC, Estoque estoqueC, int quantRetiradaEstoque, int quantItensDiff) {
-        this.clienteC = clienteC;
-        this.estoqueC = estoqueC;
-        this.quantRetiradaEstoque = quantRetiradaEstoque;
+    public Carrinho(Cliente cliente, Loja produto, int quantItens) {
+        this.cliente = cliente;
+        this.produto = produto;
+        this.quantItens = quantItens;
     }
 
-    public Cliente getClienteC() {
-        return clienteC;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setClienteC(Cliente clienteC) {
-        this.clienteC = clienteC;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public Estoque getEstoqueC() {
-        return estoqueC;
+    public Loja getProduto() {
+        return produto;
     }
 
-    public void setEstoqueC(Estoque estoqueC) {
-        this.estoqueC = estoqueC;
+    public void setProduto(Loja produto) {
+        this.produto = produto;
     }
 
-    public int getQuantRetiradaEstoque() {
-        return quantRetiradaEstoque;
+    public int getQuantItens() {
+        return quantItens;
     }
 
-    public void setQuantRetiradaEstoque(int quantRetiradaEstoque) {
-        this.quantRetiradaEstoque = quantRetiradaEstoque;
+    public void setQuantItens(int quantItens) {
+        this.quantItens = quantItens;
     }
 }

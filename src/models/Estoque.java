@@ -4,6 +4,7 @@ public class Estoque {
 
     private static List<Movel> moveis = new ArrayList<>();
     private static List<Eletrodomestico> eletros = new ArrayList<>();
+    private int quantEstoque;
 
     public int quantMoveis(){
         return moveis.size();

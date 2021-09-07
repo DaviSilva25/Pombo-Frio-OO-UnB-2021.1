@@ -6,15 +6,13 @@ public class Movel extends Produto{
     private String material;
     private boolean montagem;
 
-    public Movel(int idProduto, String nomeP, String descricao, String cor, double preco, double tamanho, String fabricante,
-                String ambiente, String material, boolean montagem) {
-
-        super(idProduto, nomeP, descricao, cor, preco, tamanho, fabricante);
+    public Movel(int idProduto, String nome, String descricao, String cor, double preco, double tamanho,
+                 String fabricante, int quantidade, String ambiente, String material, boolean montagem) {
+        super(idProduto, nome, descricao, cor, preco, tamanho, fabricante, quantidade);
         this.ambiente = ambiente;
         this.material = material;
         this.montagem = montagem;
     }
-
 
     public String getAmbiente() {
         return ambiente;

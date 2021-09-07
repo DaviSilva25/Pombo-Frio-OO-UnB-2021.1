@@ -4,29 +4,28 @@ import java.util.Date;
 
 public class Cliente {
 
-    private String nomeC;
+    private String nome;
     private String cpf;
-    private Date dataNasc;
+    private Date dataNascimento;
     private Endereco endereco;
     private Telefone telefone;
     private Cartao cartao;
 
-    public Cliente(String nomeC, String cpf, Date dataDeNasc, Endereco endereco, Cartao cartao) {
-        this.nomeC = nomeC;
+    public Cliente(String nome, String cpf, Date dataNascimento, Endereco endereco,Telefone telefone, Cartao cartao) {
+        this.nome = nome;
         this.cpf = cpf;
-        this.dataNasc = dataNasc;
+        this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.telefone = telefone;
         this.cartao = cartao;
     }
 
-
-    public String getNomeC() {
-        return nomeC;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeC(String nomeC) {
-        this.nomeC = nomeC;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getCpf() {
@@ -37,12 +36,12 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public Date getDataDeNasc() {
-        return dataNasc;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDataDeNasc(Date dataDeNasc) {
-        this.dataNasc = dataDeNasc;
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public Endereco getEndereco() {
@@ -68,7 +67,4 @@ public class Cliente {
     public void setCartao(Cartao cartao) {
         this.cartao = cartao;
     }
-
-
-
 }
