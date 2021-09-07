@@ -10,6 +10,13 @@ public class Telefone {
         this.numero = numero;
     }
 
+    @Override
+    public String toString() {
+        return  " Telefone" + "\n" +
+                " ddd: " + ddd + "\n" +
+                " Numero: " + numero + "\n";
+    }
+
     public String getDdd() {
         return ddd;
     }

@@ -13,6 +13,15 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
+    @Override
+    public String toString() {
+        return  " Endereco" + "\n" +
+                " uf: " + uf + "\n" +
+                " Cidade: " + cidade + "\n" +
+                " Bairro: " + bairro + "\n" +
+                " Logradouro: " + logradouro + "\n";
+    }
+
     public String getUf() {
         return uf;
     }
