@@ -4,7 +4,7 @@ import java.util.*;
 public class Venda {
 
     private String codigoDeVenda;
-    private Date dataDaVenda;
+    private Date dataVenda;
     private double valorFinal;
     private String formaDePagamento;
     private double frete;
@@ -13,9 +13,9 @@ public class Venda {
     private Boleto boleto;
     private Cartao cartao;
 
-    public Venda(String codigoDeVenda, Date dataDaVenda, double valorFinal, String formaDePagamento, double frete, Carrinho carrinho) {
+    public Venda(String codigoDeVenda, Date dataVenda, double valorFinal, String formaDePagamento, double frete, Carrinho carrinho) {
         this.codigoDeVenda = codigoDeVenda;
-        this.dataDaVenda = dataDaVenda;
+        this.dataVenda = dataVenda;
         this.valorFinal = valorFinal;
         this.formaDePagamento = formaDePagamento;
         this.frete = frete;
@@ -31,11 +31,11 @@ public class Venda {
     }
 
     public Date getDataDaVenda() {
-        return dataDaVenda;
+        return dataVenda;
     }
 
-    public void setDataDaVenda(Date dataDaVenda) {
-        this.dataDaVenda = dataDaVenda;
+    public void setDataDaVenda(Date dataVenda) {
+        this.dataVenda = dataVenda;
     }
 
     public double getValorFinal() {
