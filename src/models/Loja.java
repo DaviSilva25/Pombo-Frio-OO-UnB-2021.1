@@ -9,12 +9,20 @@ public class Loja {
     private Endereco endereco;
     private Estoque estoque = new Estoque();
 
-    public Loja(String nome, String cnpj, Telefone telefone, Endereco endereco, Estoque estoque) {
+    public Loja(String nome, String cnpj, Telefone telefone, Endereco endereco) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.telefone = telefone;
         this.endereco = endereco;
-        this.estoque = estoque;
+    }
+
+    @Override
+    public String toString() {
+        return  "Loja: " + "\n" +
+                "Nome: " + nome + "\n" +
+                "CNPJ: " + cnpj + "\n" +
+                "Telefone: " + telefone + "\n" +
+                "Endereco: " + endereco + "\n";
     }
 
     public String getNome() {

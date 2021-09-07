@@ -1,6 +1,6 @@
 package models;
 
-import java.util.Date;
+import java.util.*;
 
 public class Cliente {
 
@@ -18,6 +18,17 @@ public class Cliente {
         this.endereco = endereco;
         this.telefone = telefone;
         this.cartao = cartao;
+    }
+
+    @Override
+    public String toString() {
+        return  " Cliente:" + "\n" +
+                " Nome: " + nome + "\n" +
+                " CPF: " + cpf + "\n" +
+                " Data de Nascimento: " + dataNascimento + "\n" +
+                " Endereco: " + endereco + "\n" +
+                " Telefone: " + telefone + "\n" +
+                " Cartao: " + cartao + "\n";
     }
 
     public String getNome() {

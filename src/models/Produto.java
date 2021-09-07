@@ -2,25 +2,15 @@ package models;
 
 public abstract class Produto {
 	
-	private int idProduto;
-	private String nome;
-	private String descricao;
-	private String cor;
-	private double preco; 
-	private double tamanho; 
-	private String fabricante;
-	private int quantidade;
+	protected int idProduto;
+	protected String nome;
+	protected String descricao;
+	protected String cor;
+	protected double preco;
+	protected String tamanho;
+	protected String fabricante;
+	protected int quantidade;
 
-	public Produto(int idProduto, String nome, String descricao, String cor, double preco, double tamanho, String fabricante, int quantidade) {
-		this.idProduto = idProduto;
-		this.nome = nome;
-		this.descricao = descricao;
-		this.cor = cor;
-		this.preco = preco;
-		this.tamanho = tamanho;
-		this.fabricante = fabricante;
-		this.quantidade = quantidade;
-	}
 
 	public int getIdProduto() {
 		return idProduto;
@@ -62,11 +52,11 @@ public abstract class Produto {
 		this.preco = preco;
 	}
 
-	public double getTamanho() {
+	public String getTamanho() {
 		return tamanho;
 	}
 
-	public void setTamanho(double tamanho) {
+	public void setTamanho(String tamanho) {
 		this.tamanho = tamanho;
 	}
 
