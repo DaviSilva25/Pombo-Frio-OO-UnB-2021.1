@@ -1,30 +1,41 @@
 package models;
-import java.util.*;
 
 public class Loja {
-
+    //ATRIBUTOS PROPIOS
     private String nome;
     private String cnpj;
     private Telefone telefone;
     private Endereco endereco;
-    private Estoque estoque = new Estoque();
+    private Estoque estoque;
 
-    public Loja(String nome, String cnpj, Telefone telefone, Endereco endereco) {
+    //CONSTRUTORES LOJA
+    public Loja(String nome, String cnpj, Telefone telefone, Endereco endereco, Estoque estoque) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.telefone = telefone;
         this.endereco = endereco;
+        this.estoque = estoque;
     }
+    public Loja(){
+    }
+
 
     @Override
     public String toString() {
-        return  "Loja: " + "\n" +
-                "Nome: " + nome + "\n" +
-                "CNPJ: " + cnpj + "\n" +
-                "Telefone: " + telefone + "\n" +
-                "Endereco: " + endereco + "\n";
+        return  " Loja: " + "\n" +
+                " Nome: " + nome + "\n" +
+                " CNPJ: " + cnpj + "\n" +
+                " Telefone: " + telefone + "\n" +
+                " Endereco: " + endereco + "\n" +
+                " Quantidade total de produtos: "+ estoque.getQuantEstoque()+ "\n"
+                + estoque.toString()+"\n";
+    }
+    //METEDO PARA REDUZIR OS ATRIBUTOS DE LOJA APRESENTADOS NA SAIDA
+    public String imprimirLoja(){
+        return  " "+nome+" / CNPJ ("+cnpj+") / UF("+endereco.getUf()+ ") / Telefone "+telefone;
     }
 
+    //GETS E SETS
     public String getNome() {
         return nome;
     }

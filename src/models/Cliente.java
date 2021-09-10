@@ -1,23 +1,24 @@
 package models;
 
-import java.util.*;
-
 public class Cliente {
-
+    //ATRIBUTOS PROPIOS
     private String nome;
     private String cpf;
-    private Date dataNascimento;
+    private String dataNascimento;
     private Endereco endereco;
     private Telefone telefone;
     private Cartao cartao;
 
-    public Cliente(String nome, String cpf, Date dataNascimento, Endereco endereco,Telefone telefone, Cartao cartao) {
+    //CONSTRUTORES CLIENTE
+    public Cliente(String nome, String cpf, String dataNascimento, Endereco endereco,Telefone telefone, Cartao cartao) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.telefone = telefone;
         this.cartao = cartao;
+    }
+    public Cliente(){
     }
 
     @Override
@@ -30,7 +31,12 @@ public class Cliente {
                 " Telefone: " + telefone + "\n" +
                 " Cartao: " + cartao + "\n";
     }
+    //METODO PARA IMPRIMIR APENAS ALGUNS ATRIBUTOS NA SAIDA
+    public String imprimirCliente(){
+        return  " "+nome+" / CPF("+cpf+") / UF("+ endereco.getUf()+ ") / Telefone "+telefone;
+    }
 
+    //GETS E SETS
     public String getNome() {
         return nome;
     }
@@ -47,11 +53,11 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

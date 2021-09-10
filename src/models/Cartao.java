@@ -1,29 +1,28 @@
 package models;
 
-import java.util.Date;
-
 public class Cartao {
+    //ATRIBUTOS PROPIOS
     private String nome;
     private String numero;
     private String cvv;
     private String dataVencimento;
 
+    //CONSTRUTORES CARTAO
     public Cartao(String nome, String numero, String cvv, String dataVencimento) {
         this.nome = nome;
         this.numero = numero;
         this.cvv = cvv;
         this.dataVencimento = dataVencimento;
     }
+    public Cartao(){
+    }
 
     @Override
     public String toString() {
-        return  "Cartao" + "\n" +
-                "Nome: " + nome + "\n" +
-                "Numero: " + numero + "\n" +
-                "Cvv: '" + cvv + "\n" +
-                "Data de Vencimento: " + dataVencimento + "\n";
+        return "Nome[" +nome+ "], Numero[" +numero+ "], Cvv[" + cvv + "], Data de Vencimento[" +dataVencimento+ "]";
     }
 
+    //GETS E SETS
     public String getNome() {
         return nome;
     }

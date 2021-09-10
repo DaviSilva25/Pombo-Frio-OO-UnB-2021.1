@@ -1,42 +1,41 @@
 package models;
 
-public class Movel extends Produto{
-
+public class Movel extends Produto implements Cloneable {
+    //ATRIBUTOS PROPIOS
     private String ambiente;
     private String material;
-    private boolean montagem;
-
+    //CONTRUTORES MOVEL
     public Movel(int idProduto, String nome, String descricao, String cor, double preco, String tamanho,
-                 String fabricante, int quantidade, String ambiente, String material, boolean montagem) {
-        this.idProduto = idProduto;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.cor = cor;
-        this.preco = preco;
-        this.tamanho = tamanho;
-        this.fabricante = fabricante;
-        this.quantidade = quantidade;
+                 String fabricante, int quantidade, String ambiente, String material) {
+        //ATRIBUTOS HERDADOS DA CLASSE PRODUTO
+        super(idProduto, nome, descricao, cor, preco, tamanho, fabricante, quantidade);
         this.ambiente = ambiente;
         this.material = material;
-        this.montagem = montagem;
+    }
+    public Movel() {
+        super();
     }
 
+    @Override//METODO DA CLASSE PRODUTO
+    public String concatenador(){
+        return  "ID["+this.idProduto+ "], Nome:[" +this.nome+ "], Preco:[R$ " +this.preco+ "], Fabricante:[" +this.fabricante+ "], " +
+                "Quantidade: ["+this.quantidade+ "]";
+    }
 
     @Override
     public String toString() {
-        return  " Movel["+ idProduto + "]:\n" +
-                " Nome: " + nome + "\n" +
-                " descricao: " + descricao + "\n" +
-                " cor: " + cor + "\n" +
-                " preco: " + preco + "\n" +
-                " tamanho: " + tamanho + "\n" +
-                " fabricante: " + fabricante + "\n" +
-                " quantidade: " + quantidade + "\n" +
+        return  " Movel: " + "\n" +
+                  super.toString() + "\n" +
                 " ambiente: " + ambiente + "\n" +
-                " material: " + material + "\n" +
-                " montagem: " + montagem + "\n";
+                " material: " + material + "\n";
     }
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    //GETS E SETS
     public String getAmbiente() {
         return ambiente;
     }
@@ -51,13 +50,5 @@ public class Movel extends Produto{
 
     public void setMaterial(String material) {
         this.material = material;
-    }
-
-    public boolean isMontagem() {
-        return montagem;
-    }
-
-    public void setMontagem(boolean montagem) {
-        this.montagem = montagem;
     }
 }
