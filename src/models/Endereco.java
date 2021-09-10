@@ -1,27 +1,28 @@
 package models;
 
 public class Endereco {
+    //METODOS PROPIOS
     private String uf;
     private String cidade;
     private String bairro;
     private String logradouro;
 
+    //CONSTRUTOR ENDERECO
     public Endereco(String uf, String cidade, String bairro, String logradouro) {
         this.uf = uf;
         this.cidade = cidade;
         this.bairro = bairro;
         this.logradouro = logradouro;
     }
+    public Endereco(){
+    }
 
     @Override
     public String toString() {
-        return  " Endereco" + "\n" +
-                " uf: " + uf + "\n" +
-                " Cidade: " + cidade + "\n" +
-                " Bairro: " + bairro + "\n" +
-                " Logradouro: " + logradouro + "\n";
+        return  "UF[" +uf+ "] Cidade[" +cidade+ "] Bairro[" +bairro+ "] Logradouro[" +logradouro+ "]";
     }
 
+    //GETS E SETS
     public String getUf() {
         return uf;
     }

@@ -1,22 +1,24 @@
 package models;
 
 public class Telefone {
-
+    //ATRIBUTOS PROPIOS
     private String ddd;
     private String numero;
 
+    //CONSTRUTORES TELEFONE
     public Telefone(String ddd, String numero) {
         this.ddd = ddd;
         this.numero = numero;
     }
+    public Telefone(){
+    }
 
     @Override
     public String toString() {
-        return  " Telefone" + "\n" +
-                " ddd: " + ddd + "\n" +
-                " Numero: " + numero + "\n";
+        return  "(" +ddd+ ") " +numero;
     }
 
+    //GETS E SETS
     public String getDdd() {
         return ddd;
     }
