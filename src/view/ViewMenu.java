@@ -1,5 +1,6 @@
 package view;
 
+
 import controller.ControlRegisto;
 
 import javax.swing.*;
@@ -20,19 +21,10 @@ public class ViewMenu implements ActionListener {
     private static JButton vendaButton = new JButton();
     private static JButton lojaButton = new JButton();
 
-    public static ControlRegisto viewDados;
-    static {
-        try {
-            viewDados = new ControlRegisto();
-        }
-        catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void main(String[] args) throws CloneNotSupportedException {
-        ViewMenu menu = new ViewMenu();
 
+        ViewMenu menu = new ViewMenu();
 
     }
 
@@ -51,7 +43,7 @@ public class ViewMenu implements ActionListener {
         LojaMenu();
 
 
-        janela.setBounds(700,125, 350,668);
+        janela.setBounds(700,125, 350,670);
         janela.setTitle("Menu Principal");
         janela.setIconImage(logo2.getImage());
         janela.getContentPane().setBackground(new Color(218,228,233));
@@ -67,9 +59,14 @@ public class ViewMenu implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if(e.getSource() == clienteButton){
+            new ViewCliente();
+            janela.dispose();
+        }
     }
 
+
+    //ESTRUTURA DO CLIENTE NO MENU
     public void ClienteMenu(){
         JLabel clienteLabel = new JLabel();
 
@@ -84,6 +81,7 @@ public class ViewMenu implements ActionListener {
         clienteButton.setBounds(75,6, 169,60);
         clienteButton.setIcon(cliente2);
         clienteButton.setFocusable(false);
+        clienteButton.addActionListener(this);
 
         clienteLabel.setIcon(cliente);
         clienteLabel.setBounds(3,3 ,69,66);
@@ -92,7 +90,7 @@ public class ViewMenu implements ActionListener {
         clientePanel.add(clienteLabel);
         clientePanel.add(clienteButton);
     }
-
+    //ESTRUTURA DO ESTOQUE NO MENU
     public void EstoqueMenu(){
         JLabel estoqueLabel = new JLabel();
 
@@ -115,7 +113,7 @@ public class ViewMenu implements ActionListener {
         estoquePanel.add(estoqueLabel);
         estoquePanel.add(estoqueButton);
     }
-
+    //ESTRUTURA DA VENDA NO MENU
     public void VendaMenu(){
         JLabel vendaLabel = new JLabel();
 
@@ -138,7 +136,7 @@ public class ViewMenu implements ActionListener {
         vendaPanel.add(vendaLabel);
         vendaPanel.add(vendaButton);
     }
-
+    //ESTRUTURA DA LOJA NO MENU
     public void LojaMenu(){
         JLabel lojaLabel = new JLabel();
 

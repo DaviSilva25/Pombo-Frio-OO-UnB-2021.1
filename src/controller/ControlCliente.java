@@ -4,15 +4,31 @@ import java.util.*;
 
 
 public class ControlCliente {
+    private static List<String[]> dadosCliente = new ArrayList<>();
+    private static String cartao;
 
-    public static String listarClientes(ControlRegisto dado){
-        List<Cliente> ListCLiente = new ArrayList<>();
-        String a = "";
-        for(int i=0; i<dado.getDados().getCliente().size(); i++)
-            a += "\n"+dado.getDados().getCliente().get(i).imprimirCliente();
-        return a;
+    public ControlCliente(){
     }
 
+
+    //METODO QUE DEFINE OS ELEMENTOS QUE IRAO APARECER NA TABELA
+    public static List<String[]> dadosTabela(ControlRegisto clienteD){
+
+        for(int i=0;i< clienteD.getDados().getCliente().size(); i++){
+            if(clienteD.getDados().getCliente().get(i).getCartao() != null)
+                cartao = "SIM";
+            else
+                cartao = "NAO";
+
+            dadosCliente.add(new String[]{clienteD.getDados().getCliente().get(i).getNome(),
+                                      clienteD.getDados().getCliente().get(i).getCpf(),
+                                      clienteD.getDados().getCliente().get(i).getEndereco().getUf(),
+                                      clienteD.getDados().getCliente().get(i).getTelefone().toString(),
+                                      cartao});
+        }
+
+    return dadosCliente;
+    }
 }
 
 

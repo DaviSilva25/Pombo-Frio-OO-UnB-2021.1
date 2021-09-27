@@ -23,7 +23,7 @@ public class Registro {
         String[] sigla = {"DF", "MT", "GO", "MS", "SP", "RJ", "ES", "MG", "SC", "PR", "SR", "PB", "MA",
                 "CE", "PI", "RN", "PE", "AL", "SE", "BA", "AM", "PA", "TO", "RO", "RR", "AC", "AP"};
         List<String> siglas = new ArrayList<>(Arrays.asList(sigla));
-        String[] nome = {"Maria", "Joao", "Davi", "Karla", "Thiago", "Carlos", "Fabiana"};
+        String[] nome = {"Maria", "Joao", "Davi", "Karla", "Thiago", "Carlos", "Fabiana", "Jose Lisvaldo"};
         List<String>  nomes = new ArrayList<>(Arrays.asList(nome));
         Random ale = new Random();
 
@@ -32,15 +32,16 @@ public class Registro {
 
         /*LACO DE REPETICAO RESPONSAVEL PELO PRE CADASTRO DE:
          TELEFONE, ENDERECO, CARTAO, ELETRODOMESTICO, MOVEL*/
-        for (int i = 0; i < 10; i++) {
 
+        for (int i = 0; i < 50; i++) {
+
+            cartao.add(i, new Cartao("Generico"+(i+1), "1234.5678.1011 - "+(i+1), ""+(101+i), "0"+(i+1)+"/2"+(i+1)));
             telefone.add(i, new Telefone(""+(i+1) * 100, "98400-000"+i));
             endereco.add(i, new Endereco(""+siglas.get(ale.nextInt(26)), "Cidade"+(i+1), "Bairro"+(i+1), "Logradouro"+(i+1)));
-            cartao  .add(i, new Cartao("Generico"+(i+1), "1234.5678.1011 - "+(i+1), ""+(101+i), "0"+(i+1)+"/2"+(i+1)));
-            cliente .add(i, new Cliente(""+nomes.get(ale.nextInt(7)), "123.456.789-1"+i,((ale.nextInt(29)+1))+"/"+((ale.nextInt(12)+1))+"/"+((ale.nextInt(52)+1950)),
-                         endereco.get(i), telefone.get(i), cartao.get(i)));
             eletro  .add(i, new Eletrodomestico( ((2*i)+1), "Eletrodomestico"+(i+1), "Descricao"+(i+1)+"]", "Cor"+(i+1), (i+1) * 500, "Tamanho"+(i+1),
                          "Marca"+(i+1), 400, "Capacidade "+(i+1)+"L", "Voltagem "+(i+1)+"v", "Potencia "+(i+1)+"w"));
+            cliente.add(i, new Cliente(""+nomes.get(ale.nextInt(8)), "123.456.789-"+(i+10),((ale.nextInt(29)+1))+"/"+((ale.nextInt(12)+1))+"/"+((ale.nextInt(52)+1950)),
+                    endereco.get(i), telefone.get(i), cartao.get(i)));
             movel   .add(i, new Movel((2 * i), "Movel"+(i+1), "Descricao"+(i+1), "Cor"+(i+1), (i+1) * 500, "Tamanho"+(i+1),
                          "Marca"+(i+1), 400, "Ambiente"+(i+1), "Material"+(i+1)));
 
@@ -60,12 +61,15 @@ public class Registro {
                 pagamento = "BOLETO";
 
             vendas.add(i, new Venda(cliente.get(i), loja, pagamento));
+
             for (int j = 0; j < ale.nextInt(5)+1; j++)
-            vendas.get(i).adicionar(movel.get(a1), a);
+                vendas.get(i).adicionar(movel.get(a1), a);
             estoque.setQuantEstoque(a);
+
             for (int j = 0; j < ale.nextInt(5)+1; j++)
-            vendas.get(i).adicionar(eletro.get(b1), b);
+                vendas.get(i).adicionar(eletro.get(b1), b);
             estoque.setQuantEstoque(b);
+
             vendas.get(i).setValorFinal();
             vendas.get(i).setCodigoDeVenda();
 
