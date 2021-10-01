@@ -1,29 +1,18 @@
 package modelTables;
 
-import models.Telefone;
-
 import javax.swing.table.AbstractTableModel;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class MTableCliente extends AbstractTableModel {
 
     private final String[] colunas = {"Nome", "CPF", "UF", "Telefone", "Tem cartao?"};
-    private List<String[]> clienteDados;
+    private static List<String[]> clienteDados;
 
     public MTableCliente(List<String[]> listaCli){
-        Collections.sort(listaCli, new Comparator<String[]>() {
-            @Override
-            public int compare(String[] A, String[] B) {
-                return A[0].compareTo(B[0]);
-            }
-        });
-
+        listaCli.sort(Comparator.comparing(A -> A[0]));
         clienteDados = listaCli;
     }
-
 
     @Override
     public int getRowCount() {
@@ -63,23 +52,6 @@ public class MTableCliente extends AbstractTableModel {
     public String getColumnName(int indice){
         return colunas[indice];
     }
-
-    public Class getColClass(int coluna){
-        switch (coluna){
-            case 0, 1, 2 -> {
-                return String.class;
-            }
-            default -> {
-                return null;
-            }
-
-        }
-    }
-
-
-
-
-
 
 
 }

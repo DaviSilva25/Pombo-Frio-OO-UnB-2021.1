@@ -3,7 +3,7 @@ package controller;
 import models.Registro;
 
 public class ControlRegisto {
-    private Registro dados = new Registro();
+    private static Registro dados = new Registro();
 
 
     public ControlRegisto() throws CloneNotSupportedException {
@@ -13,7 +13,7 @@ public class ControlRegisto {
 
 
     //gets e sets
-    public Registro getDados() {
+    public static Registro getDados() {
         return dados;
     }
 

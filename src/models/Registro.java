@@ -33,7 +33,7 @@ public class Registro {
         /*LACO DE REPETICAO RESPONSAVEL PELO PRE CADASTRO DE:
          TELEFONE, ENDERECO, CARTAO, ELETRODOMESTICO, MOVEL*/
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 30; i++) {
 
             cartao.add(i, new Cartao("Generico"+(i+1), "1234.5678.1011 - "+(i+1), ""+(101+i), "0"+(i+1)+"/2"+(i+1)));
             telefone.add(i, new Telefone(""+(i+1) * 100, "98400-000"+i));

@@ -1,33 +1,35 @@
 package view;
 
-
-import controller.ControlRegisto;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class ViewMenu implements ActionListener {
+public class ViewMenu{
     private static JFrame janela = new JFrame();
-
     private static JPanel clientePanel = new JPanel();
     private static JPanel estoquePanel = new JPanel();
     private static JPanel vendaPanel = new JPanel();
     private static JPanel lojaPanel = new JPanel();
-
     private static JButton clienteButton = new JButton();
     private static JButton estoqueButton = new JButton();
     private static JButton vendaButton = new JButton();
     private static JButton lojaButton = new JButton();
+    private static MouseAdapter click = new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if(e.getSource() == clienteButton){
+                new ViewCliente(0);
+                janela.dispose();
+            }
 
+        }
+    };
 
-    public static void main(String[] args) throws CloneNotSupportedException {
-
-        ViewMenu menu = new ViewMenu();
+    public static void main(String[] args) {
+        new ViewMenu();
 
     }
-
 
     public ViewMenu(){
         JLabel logoPanel = new JLabel();
@@ -43,7 +45,8 @@ public class ViewMenu implements ActionListener {
         LojaMenu();
 
 
-        janela.setBounds(700,125, 350,670);
+        janela.setSize(350,670);
+        janela.setLocationRelativeTo(null);
         janela.setTitle("Menu Principal");
         janela.setIconImage(logo2.getImage());
         janela.getContentPane().setBackground(new Color(218,228,233));
@@ -55,14 +58,6 @@ public class ViewMenu implements ActionListener {
         janela.add(estoquePanel);
         janela.add(vendaPanel);
         janela.add(lojaPanel);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == clienteButton){
-            new ViewCliente();
-            janela.dispose();
-        }
     }
 
 
@@ -78,10 +73,11 @@ public class ViewMenu implements ActionListener {
         clientePanel.setBounds(42,240, 250,72);
         clientePanel.setBorder(BorderFactory.createLineBorder(new Color(101,1,154),3));
 
+        clienteButton.removeMouseListener(click);
         clienteButton.setBounds(75,6, 169,60);
         clienteButton.setIcon(cliente2);
         clienteButton.setFocusable(false);
-        clienteButton.addActionListener(this);
+        clienteButton.addMouseListener(click);
 
         clienteLabel.setIcon(cliente);
         clienteLabel.setBounds(3,3 ,69,66);
