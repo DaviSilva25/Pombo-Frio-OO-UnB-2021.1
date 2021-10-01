@@ -11,7 +11,6 @@ public class ControlCliente {
     private static List<String> dadosViewCliente = new ArrayList<>();
     private static String cartao;
     private static ControlRegisto dadosR;
-
     static {
         try {
             dadosR = new ControlRegisto();
@@ -61,6 +60,7 @@ public class ControlCliente {
         return dadosCliente;
 
     }
+
     //METODO PARA ADCIONAR CLIENTE
     public static void adicionarCliente(List<String> dadosCliente){
         Cliente novoCliente = new Cliente();
