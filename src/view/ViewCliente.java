@@ -66,8 +66,6 @@ public class ViewCliente{
             janela.add(labelFiltro);
             janela.add(filtroTextfield);
             dadosTabela = new MTableCliente(ControlCliente.filtrarTabela(ControlCliente.getDadosR(), filtroTextfield.getText()));
-            tabelaCliente.setModel(dadosTabela);
-            scroll.setViewportView(tabelaCliente);
         }
 
         else {
@@ -75,11 +73,11 @@ public class ViewCliente{
             janela.remove(filtroTextfield);
             janela.remove(labelFiltro);
             dadosTabela = new MTableCliente(ControlCliente.dadosTabela(ControlCliente.getDadosR()));
-            tabelaCliente.setModel(dadosTabela);
-            scroll.setViewportView(tabelaCliente);
         }
+        tabelaCliente.setModel(dadosTabela);
+        scroll.setViewportView(tabelaCliente);
 
-            janela.setLayout(null);
+        janela.setLayout(null);
             janela.setSize(800, 525);
             janela.setLocationRelativeTo(null);
             scroll.setBackground(new Color(101, 240, 154));
@@ -135,7 +133,6 @@ public class ViewCliente{
             janela.add(painelButtons);
             janela.add(painel);
 
-
     }
 
     public void painelBotoes(){
@@ -147,12 +144,14 @@ public class ViewCliente{
         painelButtons.setBackground(new Color(161,96,228));
 
         //BOTAO CADASTRAR
+        cadastrar.removeMouseListener(click);
         cadastrar.setBounds(10,10, 150,50);
         cadastrar.setIcon(new ImageIcon("src/images/novoButton.png"));
         cadastrar.setFocusable(false);
         cadastrar.addMouseListener(click);
 
         //BOTAO FILTRAR
+        filtrar.removeMouseListener(click);
         filtrar.setBounds(10,70, 150,50);
         filtrar.setIcon(new ImageIcon("src/images/filtrarButton.png"));
         filtrar.setFocusable(false);

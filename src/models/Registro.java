@@ -38,8 +38,8 @@ public class Registro {
             cartao.add(i, new Cartao("Generico"+(i+1), "1234.5678.1011 - "+(i+1), ""+(101+i), "0"+(i+1)+"/2"+(i+1)));
             telefone.add(i, new Telefone(""+(i+1) * 100, "98400-000"+i));
             endereco.add(i, new Endereco(""+siglas.get(ale.nextInt(26)), "Cidade"+(i+1), "Bairro"+(i+1), "Logradouro"+(i+1)));
-            eletro  .add(i, new Eletrodomestico( ((2*i)+1), "Eletrodomestico"+(i+1), "Descricao"+(i+1)+"]", "Cor"+(i+1), (i+1) * 500, "Tamanho"+(i+1),
-                         "Marca"+(i+1), 400, "Capacidade "+(i+1)+"L", "Voltagem "+(i+1)+"v", "Potencia "+(i+1)+"w"));
+            eletro  .add(i, new Eletrodomestico( ((2*i)+1), "Eletrodomestico"+(i+1), "Descricao"+(i+1), "Cor"+(i+1), (i+1) * 500, "Tamanho"+(i+1),
+                         "Marca"+(i+1), 400, (i+1)+"", (i+1)+"", (i+1)+""));
             cliente.add(i, new Cliente(""+nomes.get(ale.nextInt(8)), "123.456.789-"+(i+10),((ale.nextInt(29)+1))+"/"+((ale.nextInt(12)+1))+"/"+((ale.nextInt(52)+1950)),
                     endereco.get(i), telefone.get(i), cartao.get(i)));
             movel   .add(i, new Movel((2 * i), "Movel"+(i+1), "Descricao"+(i+1), "Cor"+(i+1), (i+1) * 500, "Tamanho"+(i+1),
