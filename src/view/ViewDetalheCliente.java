@@ -81,6 +81,7 @@ public class ViewDetalheCliente {
         janela.setIconImage(new ImageIcon("src/images/logoPombo.png").getImage());
         janela.setLayout(null);
         janela.setVisible(true);
+        janela.setResizable(false);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.getContentPane().setBackground(new Color(227, 176, 255));
         janela.setSize(423, 460);
