@@ -2152,7 +2152,7 @@
   <addons xmi:id="_97kNcA6nEeyl1_iTtZk7aA" elementId="SplitterAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon"/>
   <addons xmi:id="_IYS0IKimEeS11vbz3f9ezw" elementId="org.eclipse.ui.ide.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
   <addons xmi:id="_dz0JgGOlEeSMMaPQU2nlzw" elementId="org.eclipse.ui.ide.application.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.ide.application/org.eclipse.ui.internal.ide.application.addons.ModelCleanupAddon"/>
-  <categories xmi:id="_98HnEA6nEeyl1_iTtZk7aA" elementId="org.eclipse.team.ui.category.team" name="Version control (Team)" description="Actions that apply when working with a version control system"/>
+  <categories xmi:id="_98HnEA6nEeyl1_iTtZk7aA" elementId="org.eclipse.team.ui.category.team" name="Version controller (Team)" description="Actions that apply when working with a version controller system"/>
   <categories xmi:id="_98HnEQ6nEeyl1_iTtZk7aA" elementId="org.eclipse.ui.category.views" name="Views" description="Commands for opening views"/>
   <categories xmi:id="_98HnEg6nEeyl1_iTtZk7aA" elementId="org.eclipse.ui.category.edit" name="Edit"/>
   <categories xmi:id="_98HnEw6nEeyl1_iTtZk7aA" elementId="org.eclipse.mylyn.wikitext.ui.editor.category" name="WikiText Markup Editing Commands" description="commands for editing lightweight markup"/>

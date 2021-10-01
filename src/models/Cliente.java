@@ -33,7 +33,7 @@ public class Cliente {
     }
     //METODO PARA IMPRIMIR APENAS ALGUNS ATRIBUTOS NA SAIDA
     public String imprimirCliente(){
-        return  " "+nome+" / CPF("+cpf+") / UF("+ endereco.getUf()+ ") / Telefone "+telefone;
+        return  nome+" | CPF("+cpf+") | UF("+ endereco.getUf()+ ") | Telefone "+telefone;
     }
 
     //GETS E SETS
