@@ -23,6 +23,10 @@ public class ViewMenu{
                 janela.dispose();
             }
 
+            if(e.getSource() == estoqueButton){
+                new ViewEstoque();
+                janela.dispose();
+            }
         }
     };
 
@@ -98,9 +102,11 @@ public class ViewMenu{
         estoquePanel.setBounds(42,332, 250,72);
         estoquePanel.setBorder(BorderFactory.createLineBorder(new Color(101,1,154),3));
 
+        estoqueButton.removeMouseListener(click);
         estoqueButton.setBounds(75,6, 169,60);
         estoqueButton.setIcon(estoque2);
         estoqueButton.setFocusable(false);
+        estoqueButton.addMouseListener(click);
 
         estoqueLabel.setIcon(estoque);
         estoqueLabel.setBounds(3,3 ,69,66);
