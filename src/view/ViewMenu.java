@@ -22,9 +22,8 @@ public class ViewMenu{
                 new ViewCliente(0);
                 janela.dispose();
             }
-
-            if(e.getSource() == estoqueButton){
-                new ViewEstoque();
+            if(e.getSource() == lojaButton){
+                new ViewLoja();
                 janela.dispose();
             }
         }
@@ -102,11 +101,9 @@ public class ViewMenu{
         estoquePanel.setBounds(42,332, 250,72);
         estoquePanel.setBorder(BorderFactory.createLineBorder(new Color(101,1,154),3));
 
-        estoqueButton.removeMouseListener(click);
         estoqueButton.setBounds(75,6, 169,60);
         estoqueButton.setIcon(estoque2);
         estoqueButton.setFocusable(false);
-        estoqueButton.addMouseListener(click);
 
         estoqueLabel.setIcon(estoque);
         estoqueLabel.setBounds(3,3 ,69,66);
@@ -150,9 +147,11 @@ public class ViewMenu{
         lojaPanel.setBounds(42,516, 250,72);
         lojaPanel.setBorder(BorderFactory.createLineBorder(new Color(101,1,154),3));
 
+        lojaButton.removeMouseListener(click);
         lojaButton.setBounds(75,6, 169,60);
         lojaButton.setIcon(loja2);
         lojaButton.setFocusable(false);
+        lojaButton.addMouseListener(click);
 
         lojaLabel.setIcon(loja);
         lojaLabel.setBounds(3,3 ,69,66);
