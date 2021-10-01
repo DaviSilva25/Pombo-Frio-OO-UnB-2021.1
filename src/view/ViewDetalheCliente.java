@@ -56,11 +56,13 @@ public class ViewDetalheCliente {
             if(e.getSource() == salvar) {
                 ControlCliente.alterarDadosCliente(ControlCliente.getDadosR(), valorCPF.getText(), ViewDetalheCliente.dadosDigitados());
                 new ViewCliente(0);
+                mensagemSucessoCadastro();
                 janela.dispose();
             }
             if(e.getSource() == salvar2) {
                 ControlCliente.adicionarCliente(dadosDigitados());
                 new ViewCliente(0);
+                mensagemSucessoCadastro();
                 janela.dispose();
             }
             if(e.getSource() == cancelar) {
@@ -70,6 +72,7 @@ public class ViewDetalheCliente {
             if(e.getSource() == excluir){
                 ControlCliente.excluirCliente(ControlCliente.getDadosR(), valorCPF.getText(), ViewDetalheCliente.dadosDigitados());
                 new ViewCliente(0);
+                mensagemSucessoExclusao();
                 janela.dispose();
             }
         }
@@ -158,19 +161,19 @@ public class ViewDetalheCliente {
 
     }
 
-    public void mensagemSucessoExclusao() {
+    public static void mensagemSucessoExclusao() {
         JOptionPane.showMessageDialog(null, "Os dados foram excluidos com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
 
-    public void mensagemSucessoCadastro() {
+    public static void mensagemSucessoCadastro() {
         JOptionPane.showMessageDialog(null, "Os dados foram salvos com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
 
-    public void mensagemErroCadastro() {
+    public static void mensagemErroCadastro() {
         JOptionPane.showMessageDialog(null,"ERRO AO SALVAR OS DADOS!\n "
                         + "Pode ter ocorrido um dos dois erros a seguir:  \n"
                         + "1. Nem todos os campos foram preenchidos \n"

@@ -56,42 +56,6 @@ public class Venda {
         contaQnt += quantEletro;
     }
 
-    //FUNCAO PARA IMPRIMIR OS MOVEIS E ELETRODOMESTICOS CONTIDOS EM VENDA
-    public String imprimirProdutos(){
-        StringBuilder full;
-        full = new StringBuilder(" \n Moveis:");
-        for (Movel movel : moveisVenda) full.append("\n ").append(movel.concatenador());
-        full.append("\n Eletrodomesticos:");
-        for (Eletrodomestico eletrodomestico : eletrosVenda) full.append("\n ").append(eletrodomestico.concatenador());
-        return full.toString();
-    }
-
-    //FUNCAO PARA IMPRIMIR MENOS ELEMENTOS DE VENDA
-    public String imprimeBasico() {
-        return " Codigo de venda: " + codigoDeVenda +
-                " - Dados do cliente: " + cliente.getNome() + "-CPF(" + cliente.getCpf() +
-                ") - Dados da loja :" + loja.getNome() + "-CNPJ(" + loja.getCnpj() +
-                ") - Data da venda: " + dataVenda +
-                " - Valor final: R$" + valorFinal +
-                " - Produtos comprados: " + contaQnt;
-
-    }
-    @Override
-    public String toString() {
-        return  " =====================" + "\n" +
-                " Informações da Venda" + "\n" +
-                " =====================" + "\n" +
-                " Dados do cliente:"+cliente.imprimirCliente()+"\n" +
-                " Dados da loja :" +loja.imprimirLoja()+ "\n" +
-                " Codigo de venda: " +codigoDeVenda + "\n" +
-                " Data da venda: " +dataVenda+ "\n" +
-                " Valor final: R$" +valorFinal+ "\n" +
-                " Valor do frete R$"+getFrete()+ "\n" +
-                " Forma do pagamento: " +formaDePagamento+
-                " Itens vendidos: "+imprimirProdutos();
-    }
-
-
     //GETS E SETS
     public String getCodigoDeVenda() {
         return codigoDeVenda;

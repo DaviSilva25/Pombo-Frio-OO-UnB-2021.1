@@ -3,9 +3,9 @@ import java.time.LocalDate;
 import java.util.*;
 public class Boleto {
     //ATRIBUTOS PROPIOS
-    private final LocalDate[] dataVencimento = new LocalDate[20];
+    private final LocalDate[] dataVencimento = new LocalDate[50];
     private static int auxDv = 0;
-    private final int[] codigoDeBarra = new int[20];
+    private final int[] codigoDeBarra = new int[50];
     private static int auxB = 0;
 
     //CONSTRUTOR BOLETO

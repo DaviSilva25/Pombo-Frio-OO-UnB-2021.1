@@ -27,6 +27,11 @@ public class ViewMenu{
                 janela.dispose();
             }
 
+            if(e.getSource() == vendaButton){
+                new ViewVenda(0);
+                janela.dispose();
+            }
+
             if(e.getSource() == lojaButton){
                 new ViewLoja();
                 janela.dispose();
@@ -131,9 +136,11 @@ public class ViewMenu{
         vendaPanel.setBounds(42,424, 250,72);
         vendaPanel.setBorder(BorderFactory.createLineBorder(new Color(101,1,154),3));
 
+        vendaButton.removeMouseListener(click);
         vendaButton.setBounds(75,6, 169,60);
         vendaButton.setIcon(venda2);
         vendaButton.setFocusable(false);
+        vendaButton.addMouseListener(click);
 
         vendaLabel.setIcon(venda);
         vendaLabel.setBounds(3,3 ,69,66);

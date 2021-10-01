@@ -50,7 +50,7 @@ public class Registro {
         }
 
         /* LACO DE REPETICAO RESPONSAVEL PELO PRE CADASTRO DE VENDA*/
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 30; i++) {
             int a = ale.nextInt(20);
             int b = ale.nextInt(20);
             int a1 = ale.nextInt(10);
@@ -62,14 +62,14 @@ public class Registro {
 
             vendas.add(i, new Venda(cliente.get(i), loja, pagamento));
 
-            for (int j = 0; j < ale.nextInt(5)+1; j++)
+            for (int j = 0; j < ale.nextInt(5); j++)
                 vendas.get(i).adicionar(movel.get(a1), a);
-            estoque.setQuantEstoque(a);
+                estoque.setQuantEstoque(a);
 
-            for (int j = 0; j < ale.nextInt(5)+1; j++)
+            for (int j = 0; j < ale.nextInt(5); j++)
                 vendas.get(i).adicionar(eletro.get(b1), b);
-            estoque.setQuantEstoque(b);
 
+            estoque.setQuantEstoque(b);
             vendas.get(i).setValorFinal();
             vendas.get(i).setCodigoDeVenda();
 
