@@ -1,6 +1,7 @@
 package view;
 
 import controller.ControlEstoque;
+import controller.ControlRegisto;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,59 +12,81 @@ import java.util.List;
 
 public class ViewDetalheEletro {
 
-    private static JFrame janela = new JFrame();
-    private static JLabel labelId = new JLabel("ID do produto: ");
-    private static JTextField valorId = new JTextField();
-    private static JLabel labelNome = new JLabel("Nome: ");
-    private static JTextField valorNome = new JTextField();
-    private static JLabel labelDescricao = new JLabel("Descricao: ");
-    private static JTextField valorDescricao = new JTextField();
-    private static JLabel labelCor = new JLabel("Cor: ");
-    private static JTextField valorCor = new JTextField();
-    private static JLabel labelPreco = new JLabel("*Preco: ");
-    private static JTextField valorPreco = new JTextField();
-    private static JLabel labelTamanho = new JLabel("Tamanho: ");
-    private static JTextField valorTamanho = new JTextField();
-    private static JLabel labelFabricante = new JLabel("Fabricante: ");
-    private static JTextField valorFabricante = new JTextField();
-    private static JLabel labelQuantidade = new JLabel("*Quantidade: ");
-    private static JTextField valorQuantidade = new JTextField();
-    //dados cartao
-    private static JLabel labelCapacidade = new JLabel("Capacidade(L): ");
-    private static JTextField valorCapacidade = new JTextField();
-    private static JLabel labelVoltagem = new JLabel("Voltagem(V): ");
-    private static JTextField valorVoltagem = new JTextField();
-    private static JLabel labelPotencia = new JLabel("Potencia(W): ");
-    private static JTextField valorPotencia = new JTextField();
+    //labels e textfields de eletrodomesticos
+    private static final JLabel labelId = new JLabel("ID do produto: ");
+    private static final JLabel labelNome = new JLabel("Nome: ");
+    private static final JLabel labelDescricao = new JLabel("Descricao: ");
+    private static final JLabel labelPreco = new JLabel("Preco: ");
+    private static final JLabel labelTamanho = new JLabel("Tamanho(m): ");
+    private static final JLabel labelFabricante = new JLabel("Fabricante: ");
+    private static final JLabel labelQuantidade = new JLabel("Quantidade: ");
+    private static final JLabel labelCor = new JLabel("Cor: ");
+    private static final JLabel labelCapacidade = new JLabel("Capacidade(L): ");
+    private static final JLabel labelVoltagem = new JLabel("Voltagem(V): ");
+    private static final JLabel labelPotencia = new JLabel("Potencia(W): ");
+    private static final JTextField valorId = new JTextField();
+    private static final JTextField valorNome = new JTextField();
+    private static final JTextField valorDescricao = new JTextField();
+    private static final JTextField valorCor = new JTextField();
+    private static final JTextField valorPreco = new JTextField();
+    private static final JTextField valorTamanho = new JTextField();
+    private static final JTextField valorFabricante = new JTextField();
+    private static final JTextField valorQuantidade = new JTextField();
+    private static final JTextField valorCapacidade = new JTextField();
+    private static final JTextField valorVoltagem = new JTextField();
+    private static final JTextField valorPotencia = new JTextField();
     //DECLARACAO
-    private static List<String> preencherEletro = new ArrayList<>();
-    private static JButton salvar = new JButton("Salvar");
-    private static JButton salvar2 = new JButton("Salvar");
-    private static JButton excluir = new JButton("Excluir");
-    private static JButton cancelar = new JButton("Cancelar");
-    private static MouseAdapter click = new MouseAdapter() {
+    private static final JFrame janela = new JFrame();
+    private static final JButton salvar = new JButton();
+    private static final JButton salvar2 = new JButton();
+    private static final JButton excluir = new JButton();
+    private static final JButton cancelar = new JButton();
+    private static final MouseAdapter click = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
 
+            //SALVAR MUDANÇAS EM UM ELETRODOMESTICO EXISTENTE
             if(e.getSource() == salvar) {
-                ControlEstoque.alterarDadosEletro(valorId.getText(), ViewDetalheEletro.dadosDigitados());
-                new ViewEstoque();
+
+                //verificacao dos dados digitados
+                if (ControlRegisto.VerificarEstoque(dadosDigitados(),1) == 0){
+
+                    ControlEstoque.alterarDadosEletro(valorId.getText(), ViewDetalheEletro.dadosDigitados());
+                    mensagemSucessoCadastro();
+                }
+                else {
+                    mensagemErroCadastro();
+                }
+                new ViewEstoque(0);
                 janela.dispose();
             }
-
-            if(e.getSource() == excluir){
-                ControlEstoque.excluirEletro(valorId.getText());
-                new ViewEstoque();
-                janela.dispose();
-            }
-
+            //SALVAR MUDANÇAS EM UM ELETRODOMESTICO NOVO
             if(e.getSource() == salvar2) {
-                ControlEstoque.adicionarEletro(dadosDigitados());
-                new ViewEstoque();
+
+                //verificacao dos dados digitados
+                if (ControlRegisto.VerificarEstoque(dadosDigitados(),1) == 0){
+
+                    ControlEstoque.adicionarEletro(dadosDigitados());
+                    mensagemSucessoCadastro1();
+                }
+                else {
+                    mensagemErroCadastro();
+                }
+                new ViewEstoque(0);
                 janela.dispose();
             }
+            //EXCLUIR ELETRODOMESTICO
+            if(e.getSource() == excluir){
+
+                ControlEstoque.excluirEletro(valorId.getText());
+                mensagemSucessoExclusao();
+                new ViewEstoque(0);
+                janela.dispose();
+            }
+            //CANCELAR
             if(e.getSource() == cancelar) {
-                new ViewEstoque();
+
+                new ViewEstoque(0);
                 janela.dispose();
             }
 
@@ -73,7 +96,9 @@ public class ViewDetalheEletro {
 
     public ViewDetalheEletro(String id, int controlador){
 
-        preencherEletro = ControlEstoque.pegarDadosEletro(id);
+        //preenche a lista de Strings com os dados do eletrodomestico que tem o id do parametro do construtor
+        List<String> preencherEletro = ControlEstoque.pegarDadosEletro(id);
+
         janela.setIconImage(new ImageIcon("src/images/logoPombo.png").getImage());
         janela.setLayout(null);
         janela.setVisible(true);
@@ -81,14 +106,18 @@ public class ViewDetalheEletro {
         janela.getContentPane().setBackground(new Color(227, 176, 255));
         janela.setSize(375, 460);
         janela.setLocationRelativeTo(null);
-        janelaEletrodomestico();
-        janelaEletrodomestico2();
 
+        //Metodo para organizar os componetes da janela
+        janelaEletrodomestico();
+
+        //JANELA DETALHE DO ELETRODOMESTICO
         if(controlador == 1){
 
-            janela.setTitle("Detalhes do Movel");
+            janela.setTitle("Detalhes do eletrodomestico");
             janela.remove(salvar2);
             janela.remove(cancelar);
+
+            //PREENCHE OS TEXFIELDS COM OS DADOS DA LISTA ANTERIOR
             valorId.setText(preencherEletro.get(0));
             valorNome.setText(preencherEletro.get(1));
             valorDescricao.setText(preencherEletro.get(2));
@@ -101,40 +130,45 @@ public class ViewDetalheEletro {
             valorVoltagem.setText(preencherEletro.get(9));
             valorPotencia.setText(preencherEletro.get(10));
 
+            //BOTAO SALVAR MUDANCAS ELETRODOMESTICO
             salvar.removeMouseListener(click);
             salvar.setBounds(20, 353, 150, 50);
-            //clienteButton.setIcon(cliente2);
+            salvar.setIcon(new ImageIcon("src/images/Salvar.png"));
             salvar.setFocusable(false);
             salvar.addMouseListener(click);
             janela.add(salvar);
 
+            //BOTAO EXCLUIR ELETRODOMESTICO
             excluir.removeMouseListener(click);
             excluir.setBounds(190, 353, 150, 50);
-            //clienteButton.setIcon(cliente2);
+            excluir.setIcon(new ImageIcon("src/images/Excluir.png"));
             excluir.setFocusable(false);
             excluir.addMouseListener(click);
             janela.add(excluir);
 
+            //LIMPA A LISTA DE ELETRODOMESTICOS PARA UM PROXIMO
             preencherEletro.clear();
 
         }
+        //JANELA NOVO MOVEL
         else if(controlador == 2){
-            janela.setTitle("Cadastrar novo cliente");
+
+            janela.setTitle("Cadastrar novo eletrodomestico");
             janela.remove(salvar);
             janela.remove(excluir);
-            //valorCPF.setEditable(true);
-            //dadosDigitados();
 
+            //BOTAO SALVAR NOVO ELETRODOMESTICO
             salvar2.removeMouseListener(click);
             salvar2.setBounds(20, 353, 150, 50);
-            //clienteButton.setIcon(cliente2);
+            salvar2.setIcon(new ImageIcon("src/images/Salvar.png"));
             salvar2.setFocusable(false);
             salvar2.addMouseListener(click);
             janela.add(salvar2);
 
+            //BOTAO CANCELAR
             cancelar.removeMouseListener(click);
             cancelar.setBounds(190, 353, 150, 50);
-            //clienteButton.setIcon(cliente2);
+            cancelar.setIcon(new ImageIcon("src/images/Cancelar.png"));
             cancelar.setFocusable(false);
             cancelar.addMouseListener(click);
             janela.add(cancelar);
@@ -143,7 +177,7 @@ public class ViewDetalheEletro {
 
     }
 
-    //metodo para pegar o dados digitados
+    //metodo para pegar o dados digitados nos textfields
     public static List<String> dadosDigitados(){
 
         List<String> dadosNovos = new ArrayList<>();
@@ -162,7 +196,7 @@ public class ViewDetalheEletro {
         return dadosNovos;
     }
 
-    //metodo para organizar na janela os dados do cliente
+    //metodo para organizar na janela os dados do eletrodomestico
     private void janelaEletrodomestico(){
 
         labelId.setBounds(20,20, 150,25);
@@ -204,7 +238,7 @@ public class ViewDetalheEletro {
         labelTamanho.setBounds(20,170, 150,25);
         janela.add(labelTamanho);
 
-        valorTamanho.setBounds(190,170, 100,25);
+        valorTamanho.setBounds(190,170, 50,25);
         janela.add(valorTamanho);
         valorTamanho.setText(null);
 
@@ -221,10 +255,6 @@ public class ViewDetalheEletro {
         valorQuantidade.setBounds(190,230, 50,25);
         janela.add(valorQuantidade);
         valorQuantidade.setText(null);
-    }
-
-    //metodo para organizar na janela o cartao do cliente
-    private void janelaEletrodomestico2(){
 
         labelCapacidade.setBounds(20, 260, 150, 25);
         janela.add(labelCapacidade);
@@ -247,4 +277,40 @@ public class ViewDetalheEletro {
         janela.add(valorPotencia);
         valorPotencia.setText(null);
     }
+
+    private static void mensagemSucessoExclusao() {
+        JOptionPane.showMessageDialog(null, "Eletrodomestico excluido com sucesso!", null,
+                JOptionPane.INFORMATION_MESSAGE);
+        janela.dispose();
+    }
+
+    private static void mensagemSucessoCadastro() {
+        JOptionPane.showMessageDialog(null, "Eletrodomestico salvo com sucesso!", null,
+                JOptionPane.INFORMATION_MESSAGE);
+        janela.dispose();
+    }
+
+    private static void mensagemSucessoCadastro1() {
+        JOptionPane.showMessageDialog(null, "Novo eletrodomestico salvo com sucesso!", null,
+                JOptionPane.INFORMATION_MESSAGE);
+        janela.dispose();
+    }
+
+    private static void mensagemErroCadastro() {
+        JOptionPane.showMessageDialog(null,
+                        "ERRO AO SALVAR OS DADOS!\n" +
+                        "Pode ter ocorrido algum dos erros a seguir: \n"+
+                        "1. Ha campos obrigatorios que nao foram preenchidos.\n"+
+                        "2. Cor nao possui apenas letras e espaço como caracteres. \n"+
+                        "3. Preco nao possui apenas numeros.\n"+
+                        "4. Tamanho nao possui apenas numeros.\n"+
+                        "5. Quantidade nao possui apenas numeros.\n"+
+                        "6. Capacidade nao possui apenas numeros.\n"+
+                        "7. Voltagem nao possui apenas numeros.\n"+
+                        "8. Potencia nao possui apenas numeros.", null,
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+
+
 }

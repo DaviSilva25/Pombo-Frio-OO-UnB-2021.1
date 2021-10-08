@@ -1,14 +1,11 @@
 package controller;
 
-import models.Endereco;
-import models.Telefone;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ControlLoja {
 
-    private static List<String> dadosLoja = new ArrayList<>();
+    private static final List<String> dadosLoja = new ArrayList<>();
 
     public ControlLoja() {
     }
@@ -30,18 +27,15 @@ public class ControlLoja {
     //METODO PARA ALTERAR O DADOS DA TELA DA LOJA
     public static void alterarDadosLoja(List<String> dadosCliente){
         List<String> alteraDados = new ArrayList<>(dadosCliente);
-        Telefone telefone = new Telefone();
-        Endereco endereco = new Endereco();
 
         ControlCliente.getDadosR().getDados().getLoja().setNome(alteraDados.get(0));
         ControlCliente.getDadosR().getDados().getLoja().setCnpj(alteraDados.get(1));
-        telefone.setDdd(alteraDados.get(2));
-        telefone.setNumero(alteraDados.get(3));
-        ControlCliente.getDadosR().getDados().getLoja().setTelefone(telefone);
-        endereco.setUf(alteraDados.get(4));
-        endereco.setCidade(alteraDados.get(5));
-        endereco.setBairro(alteraDados.get(6));
-        endereco.setLogradouro(alteraDados.get(7));
-        ControlCliente.getDadosR().getDados().getLoja().setEndereco(endereco);
+        ControlCliente.getDadosR().getDados().getLoja().getTelefone().setDdd(alteraDados.get(2));
+        ControlCliente.getDadosR().getDados().getLoja().getTelefone().setNumero(alteraDados.get(3));
+        ControlCliente.getDadosR().getDados().getLoja().getEndereco().setUf(alteraDados.get(4));
+        ControlCliente.getDadosR().getDados().getLoja().getEndereco().setCidade(alteraDados.get(5));
+        ControlCliente.getDadosR().getDados().getLoja().getEndereco().setBairro(alteraDados.get(6));
+        ControlCliente.getDadosR().getDados().getLoja().getEndereco().setLogradouro(alteraDados.get(7));
+
     }
 }

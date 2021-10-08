@@ -9,45 +9,45 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class ViewCliente{
-
-    private static JPanel painel = new JPanel();
-    private static JPanel painelButtons = new JPanel();
-    private static JButton cadastrar = new JButton();
-    private static JButton filtrar = new JButton();
-    private static JButton menu = new JButton();
-    private static JButton ok = new JButton("ok");
-    private static JLabel listaCliente = new JLabel();
-    private static JLabel logoJanela = new JLabel();
-    private static JFrame janela = new JFrame("CLIENTE");
-    private static JTextField filtroTextfield = new JTextField();
-    private static JLabel labelFiltro = new JLabel("Digite o nome para o filtro: ");
-    private static MTableCliente dadosTabela;
-    private static JTable tabelaCliente = new JTable();
-    private static JScrollPane scroll = new JScrollPane();
-    private static MouseAdapter click = new MouseAdapter() {
+    //DECLARACAO
+    private static final JFrame janela = new JFrame("CLIENTE");
+    private static final JPanel painel = new JPanel();
+    private static final JPanel painelButtons = new JPanel();
+    private static final JButton ok = new JButton();
+    private static final JButton menu = new JButton();
+    private static final JButton filtrar = new JButton();
+    private static final JButton cadastrar = new JButton();
+    private static final JLabel logoJanela = new JLabel();
+    private static final JLabel labelFiltro = new JLabel("Digite um nome ou um cpf: ");
+    private static final JLabel listaCliente = new JLabel();
+    private static final JScrollPane scroll = new JScrollPane();
+    private static final JScrollPane scroll2 = new JScrollPane();
+    private static final JTextField filtroTextfield = new JTextField();
+    private static final JTable tabelaCliente = new JTable();
+    private static final MouseAdapter click = new MouseAdapter() {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-
+            //CLIQUE NA TABELA
             if(e.getClickCount() == 2 && e.getSource() == tabelaCliente) {
                 new ViewDetalheCliente((String) tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 1),1);
                 janela.dispose();
             }
-
+            //BOTAO CADASTRAR
             if(e.getSource() == cadastrar){
-                new ViewDetalheCliente("qualquercoisa",2);
+                new ViewDetalheCliente("",2);
                 janela.dispose();
             }
-
+            //BOTAO OK
             if (e.getSource() == ok){
-                new ViewCliente(1);
+                new ViewCliente(2);
                 filtroTextfield.setText(null);
             }
-
+            //BOTAO FILTRAR
             if (e.getSource() == filtrar){
                 new ViewCliente(1);
             }
-
+            //BOTAO VOLTAR
             if (e.getSource() == menu){
                 new ViewMenu();
                 janela.dispose();
@@ -57,30 +57,75 @@ public class ViewCliente{
 
     public ViewCliente(int a){
 
-        if(a != 0){
+        // JANELA APOS FILTRO
+        MTableCliente dadosTabela2;
+        if(a == 1){
+            //remove componentes remanescentes da janela
+            janela.remove(painel);
+            painel.remove(scroll);
+            painel.remove(scroll2);
+
+            ok.removeMouseListener(click);
+            ok.setBounds(155,255, 30,25);
+            ok.setIcon(new ImageIcon("src/images/OK.png"));
+            ok.setFocusable(false);
             ok.addMouseListener(click);
-            ok.setBounds(160,255, 30,25);
             labelFiltro.setBounds(15,230, 180,30);
-            filtroTextfield.setBounds(15,255, 140, 25);
+            filtroTextfield.setBounds(15,255, 135, 25);
+
             janela.add(ok);
             janela.add(labelFiltro);
             janela.add(filtroTextfield);
-            dadosTabela = new MTableCliente(ControlCliente.filtrarTabela(ControlCliente.getDadosR(), filtroTextfield.getText()));
+
+            //seta os dados da tabela de clientes
+            dadosTabela2 = new MTableCliente(ControlCliente.dadosTabela(ControlCliente.getDadosR()));
+            filtroTextfield.setText(null);
+            tabelaCliente.setModel(dadosTabela2);
+            scroll2.setViewportView(tabelaCliente);
+            painel.add(scroll2);
         }
 
-        else {
+        // JANELA APOS OK
+        else if(a == 2){
+
+            //remove componentes remanescentes da janela
+            janela.remove(painel);
+            painel.remove(scroll2);
+            painel.remove(scroll);
             janela.remove(ok);
             janela.remove(filtroTextfield);
             janela.remove(labelFiltro);
-            dadosTabela = new MTableCliente(ControlCliente.dadosTabela(ControlCliente.getDadosR()));
-        }
-        tabelaCliente.setModel(dadosTabela);
-        scroll.setViewportView(tabelaCliente);
 
-        janela.setLayout(null);
+            //seta os dados da tabela de clientes
+            dadosTabela2 = new MTableCliente(ControlCliente.filtrarTabela(ControlCliente.getDadosR(), filtroTextfield.getText()));
+            tabelaCliente.setModel(dadosTabela2);
+            scroll2.setViewportView(tabelaCliente);
+            painel.add(scroll2);
+        }
+
+        // JANELA PADRAO
+        else {
+            //remove componentes remanescentes da janela
+            janela.remove(painel);
+            painel.remove(scroll);
+            painel.remove(scroll2);
+            janela.remove(ok);
+            janela.remove(filtroTextfield);
+            janela.remove(labelFiltro);
+
+            //seta os dados da tabela de clientes
+            MTableCliente dadosTabela = new MTableCliente(ControlCliente.dadosTabela(ControlCliente.getDadosR()));
+            tabelaCliente.setModel(dadosTabela);
+            scroll.setViewportView(tabelaCliente);
+            painel.add(scroll);
+
+        }
+
+            janela.setLayout(null);
             janela.setSize(800, 525);
             janela.setLocationRelativeTo(null);
             scroll.setBackground(new Color(101, 240, 154));
+            scroll2.setBackground(new Color(101, 240, 154));
 
             //FUNCAO QUE CHAMA SO BOTOES
             painelBotoes();
@@ -93,7 +138,6 @@ public class ViewCliente{
             painel.setLayout(new GridLayout());
             painel.setBorder(BorderFactory.createLineBorder(new Color(101, 1, 154), 5));
             painel.setBounds(200, 25, 570, 450);
-            painel.add(scroll);
 
             //DEFINIÇÕES DA TABELA
             DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();

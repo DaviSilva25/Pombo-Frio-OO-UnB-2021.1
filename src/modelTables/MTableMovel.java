@@ -1,12 +1,11 @@
 package modelTables;
 
 import javax.swing.table.AbstractTableModel;
-import java.util.Comparator;
 import java.util.List;
 
 public class MTableMovel extends AbstractTableModel {
 
-    private final String[] colunas = {"ID", "Nome", "Preco R$", "Quantidade", "Ambiente"};
+    private final String[] colunas = {"ID", "Nome", "Preco R$", "Quantidade", "Cor"};
     private static List<String[]> movelDados;
 
     public MTableMovel(List<String[]> listaMovel){

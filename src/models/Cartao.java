@@ -17,11 +17,6 @@ public class Cartao {
     public Cartao(){
     }
 
-    @Override
-    public String toString() {
-        return "Nome[" +nome+ "], Numero[" +numero+ "], Cvv[" + cvv + "], Data de Vencimento[" +dataVencimento+ "]";
-    }
-
     //GETS E SETS
     public String getNome() {
         return nome;

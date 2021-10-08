@@ -1,12 +1,11 @@
 package modelTables;
 
 import javax.swing.table.AbstractTableModel;
-import java.util.Comparator;
 import java.util.List;
 
 public class MTableEletro extends AbstractTableModel {
 
-    private final String[] colunas = {"ID", "Nome", "Preco R$", "Quantidade", "Volts(V)"};
+    private final String[] colunas = {"ID", "Nome", "Preco R$", "Quantidade", "Cor"};
     private static List<String[]> eletroDados;
 
     public MTableEletro(List<String[]> listaEletro){

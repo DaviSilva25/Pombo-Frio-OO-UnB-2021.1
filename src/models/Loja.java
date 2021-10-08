@@ -16,24 +16,6 @@ public class Loja {
         this.endereco = endereco;
         this.estoque = estoque;
     }
-    public Loja(){
-    }
-
-
-    @Override
-    public String toString() {
-        return  " Loja: " + "\n" +
-                " Nome: " + nome + "\n" +
-                " CNPJ: " + cnpj + "\n" +
-                " Telefone: " + telefone + "\n" +
-                " Endereco: " + endereco + "\n" +
-                " Quantidade total de produtos: "+ estoque.getQuantEstoque()+ "\n"
-                + estoque.toString()+"\n";
-    }
-    //METEDO PARA REDUZIR OS ATRIBUTOS DE LOJA APRESENTADOS NA SAIDA
-    public String imprimirLoja(){
-        return  " "+nome+" / CNPJ ("+cnpj+") / UF("+endereco.getUf()+ ") / Telefone "+telefone;
-    }
 
     //GETS E SETS
     public String getNome() {
@@ -68,11 +50,4 @@ public class Loja {
         this.endereco = endereco;
     }
 
-    public Estoque getEstoque() {
-        return estoque;
-    }
-
-    public void setEstoque(Estoque estoque) {
-        this.estoque = estoque;
-    }
 }

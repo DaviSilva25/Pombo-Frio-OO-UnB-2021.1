@@ -53,5 +53,4 @@ public class MTableCliente extends AbstractTableModel {
         return colunas[indice];
     }
 
-
 }

@@ -6,32 +6,35 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class ViewMenu{
-    private static JFrame janela = new JFrame();
-    private static JPanel clientePanel = new JPanel();
-    private static JPanel estoquePanel = new JPanel();
-    private static JPanel vendaPanel = new JPanel();
-    private static JPanel lojaPanel = new JPanel();
-    private static JButton clienteButton = new JButton();
-    private static JButton estoqueButton = new JButton();
-    private static JButton vendaButton = new JButton();
-    private static JButton lojaButton = new JButton();
-    private static MouseAdapter click = new MouseAdapter() {
+    private static final JFrame janela = new JFrame();
+    private static final JPanel clientePanel = new JPanel();
+    private static final JPanel estoquePanel = new JPanel();
+    private static final JPanel vendaPanel = new JPanel();
+    private static final JPanel lojaPanel = new JPanel();
+    private static final JButton clienteButton = new JButton();
+    private static final JButton estoqueButton = new JButton();
+    private static final JButton vendaButton = new JButton();
+    private static final JButton lojaButton = new JButton();
+    private static final MouseAdapter click = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
+
+            //evento clique no botao cliente
             if(e.getSource() == clienteButton){
                 new ViewCliente(0);
                 janela.dispose();
             }
+            //evento clique no botao estoque
             if(e.getSource() == estoqueButton){
-                new ViewEstoque();
+                new ViewEstoque(0);
                 janela.dispose();
             }
-
+            //evento clique no botao venda
             if(e.getSource() == vendaButton){
                 new ViewVenda(0);
                 janela.dispose();
             }
-
+            //evento clique no botao loja
             if(e.getSource() == lojaButton){
                 new ViewLoja();
                 janela.dispose();
@@ -41,23 +44,28 @@ public class ViewMenu{
 
     public static void main(String[] args) {
         new ViewMenu();
-
     }
 
     public ViewMenu(){
-        JLabel logoPanel = new JLabel();
+
         janela.setLayout(null);
+        JLabel logoPanel = new JLabel();
         ImageIcon logo = new ImageIcon("src/images/pombo.png");
         ImageIcon logo2 = new ImageIcon("src/images/logoPombo.png");
 
         logoPanel.setIcon(logo);
         logoPanel.setBounds(17,20, 301,200);
+
+        //Organiza os componentes de cliente no menu
         ClienteMenu();
+        //Organiza os componentes de estoque no menu
         EstoqueMenu();
+        //Organiza os componentes de venda no menu
         VendaMenu();
+        //Organiza os componentes de loja no menu
         LojaMenu();
 
-
+        //definicoes da janela
         janela.setSize(350,670);
         janela.setLocationRelativeTo(null);
         janela.setTitle("Menu Principal");
@@ -99,6 +107,7 @@ public class ViewMenu{
         clientePanel.add(clienteLabel);
         clientePanel.add(clienteButton);
     }
+
     //ESTRUTURA DO ESTOQUE NO MENU
     public void EstoqueMenu(){
         JLabel estoqueLabel = new JLabel();
@@ -124,6 +133,7 @@ public class ViewMenu{
         estoquePanel.add(estoqueLabel);
         estoquePanel.add(estoqueButton);
     }
+
     //ESTRUTURA DA VENDA NO MENU
     public void VendaMenu(){
         JLabel vendaLabel = new JLabel();
@@ -149,6 +159,7 @@ public class ViewMenu{
         vendaPanel.add(vendaLabel);
         vendaPanel.add(vendaButton);
     }
+
     //ESTRUTURA DA LOJA NO MENU
     public void LojaMenu(){
         JLabel lojaLabel = new JLabel();

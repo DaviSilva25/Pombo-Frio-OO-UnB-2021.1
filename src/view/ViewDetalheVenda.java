@@ -2,80 +2,74 @@ package view;
 
 import controller.ControlCliente;
 import controller.ControlEstoque;
+import controller.ControlRegisto;
 import controller.ControlVenda;
-import modelTables.MTableCliente;
-import modelTables.MTableEletro;
-import modelTables.MTableMovel;
-import models.*;
+import modelTables.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ViewDetalheVenda {
 
-    //declaracoes
-    private static String cpf = new String();
-    private static List<String> produtos = new ArrayList<>();
-    private static List<String> quant = new ArrayList<>();
-    private static JFrame janela = new JFrame("VENDA");
-    private static JFrame janela2 = new JFrame("CADASTRAR CLIENTE EM VENDA");
-    private static JFrame janela3 = new JFrame("CADASTRAR PRODUTOS EM VENDA");
-    private static JPanel painel = new JPanel();
-    private static MTableCliente dadosTabela;
-    private static JTable tabelaCliente = new JTable();
-    private static JScrollPane scroll = new JScrollPane();
-    private static JLabel listaCliente = new JLabel();
-    private static JLabel logoJanela = new JLabel();
-    private static JTextField clienteTextfield = new JTextField();
-    private static JLabel labelFiltro = new JLabel("Digite o cpf do cliente que deseja atribuir a venda: ");
-    private static JTextField quantTextfield = new JTextField();
-    private static JLabel labelquant = new JLabel("Quantidade a ser adiconada: ");
-    private static JTextField idTextfield = new JTextField();
-    private static JLabel labelid = new JLabel("Digite o Id do produto: ");
-    private static JButton ok = new JButton(">");
-    private static JButton ok2 = new JButton(">");
-    private static JButton concluir = new JButton("Concluir");
+    private static final JFrame janela = new JFrame("VENDA");
+    private static final JFrame janela2 = new JFrame("CADASTRAR CLIENTE EM VENDA");
+    private static final JFrame janela3 = new JFrame("CADASTRAR PRODUTOS EM VENDA");
+    private static final JPanel painel = new JPanel();
+    private static final JPanel painelVenda = new JPanel();
+    private static final JPanel painelMovel = new JPanel();
+    private static final JPanel painelEletro = new JPanel();
+    private static final JTable tabelaCliente = new JTable();
+    private static final JTable tabelaMovel = new JTable();
+    private static final JTable tabelaEletro = new JTable();
+    private static final JTable tabelaVenda = new JTable();
+    private static final JLabel listaCliente = new JLabel();
+    private static final JLabel listaMovel = new JLabel();
+    private static final JLabel listaVenda = new JLabel();
+    private static final JLabel listaEletro = new JLabel();
+    private static final JLabel logoJanela = new JLabel();
+    private static final JLabel labelFiltro = new JLabel("Digite o cpf do cliente que deseja atribuir a venda: ");
+    private static final JLabel labelquant = new JLabel("Quantidade a ser adiconada: ");
+    private static final JLabel labelid = new JLabel("Digite o Id do produto: ");
+    private static final JTextField clienteTextfield = new JTextField();
+    private static final JTextField quantTextfield = new JTextField();
+    private static final JTextField idTextfield = new JTextField();
+    private static final JButton ok = new JButton();
+    private static final JButton ok2 = new JButton();
+    private static final JButton concluir = new JButton();
+    private static final JButton menu = new JButton();
+    private static final JScrollPane scroll = new JScrollPane();
+    private static final JScrollPane scroll1 = new JScrollPane();
+    private static final JScrollPane scroll2 = new JScrollPane();
+    private static final JScrollPane scroll3 = new JScrollPane();
 
-    private static JLabel listaMovel = new JLabel();
-    private static JPanel painelMovel = new JPanel();
-    private static MTableMovel dadosTabela1;
-    private static JTable tabelaMovel = new JTable();
-    private static JScrollPane scroll1 = new JScrollPane();
+    //Labels e textfields para detalhes da venda
+    private static final JLabel labelCodigoVenda = new JLabel("Codigo da venda: ");
+    private static final JLabel labelNome = new JLabel("Nome do cliente: ");
+    private static final JLabel labelCPF = new JLabel("CPF do cliente: ");
+    private static final JLabel labelNomeLoja = new JLabel("Nome da loja: ");
+    private static final JLabel labelCNPJ = new JLabel("CNPJ da loja: ");
+    private static final JLabel labelDataVenda = new JLabel("Data da venda: ");
+    private static final JLabel labelValorFinal = new JLabel("Valor final (R$): ");
+    private static final JLabel labelFrete = new JLabel("Valor do frete (R$): ");
+    private static final JLabel labelFormaPagamento = new JLabel("Forma pagamento: ");
+    private static final JTextField valorCodigaVenda = new JTextField();
+    private static final JTextField valorNome = new JTextField();
+    private static final JTextField valorCPF = new JTextField();
+    private static final JTextField valorNomeLoja = new JTextField();
+    private static final JTextField valorCNPJ = new JTextField();
+    private static final JTextField valorDataVenda = new JTextField();
+    private static final JTextField valorFinal = new JTextField();
+    private static final JTextField valorFrete = new JTextField();
+    private static final JTextField valorFormaPagamento = new JTextField();
+    private static boolean clickcount;
 
-    private static JLabel listaEletro = new JLabel();
-    private static JPanel painelEletro = new JPanel();
-    private static MTableEletro dadosTabela2;
-    private static JTable tabelaEletro = new JTable();
-    private static JScrollPane scroll2 = new JScrollPane();
 
-    //dados venda
-    private static JLabel labelCodigoVenda = new JLabel("Codigo da venda: ");
-    private static JTextField valorCodigaVenda = new JTextField();
-    private static JLabel labelNome = new JLabel("Nome do cliente: ");
-    private static JTextField valorNome = new JTextField();
-    private static JLabel labelCPF = new JLabel("CPF do cliente: ");
-    private static JTextField valorCPF = new JTextField();
-    private static JLabel labelNomeLoja = new JLabel("Nome da loja: ");
-    private static JTextField valorNomeLoja = new JTextField();
-    private static JLabel labelCNPJ = new JLabel("CNPJ da loja: ");
-    private static JTextField valorCNPJ = new JTextField();
-    private static JLabel labelDataVenda = new JLabel("Data da venda: ");
-    private static JTextField valorDataVenda = new JTextField();
-    private static JLabel labelValorFinal = new JLabel("Valor final: ");
-    private static JTextField valorFinal = new JTextField();
-    private static JLabel labelFrete = new JLabel("Valor do frete: ");
-    private static JTextField valorFrete = new JTextField();
-    private static JLabel labelFormaPagamento = new JLabel("Forma pagamento: ");
-    private static JTextField valorFormaPagamento = new JTextField();
 
-    private static List<String> preencherVenda = new ArrayList<>();
-    private static JButton menu = new JButton("Voltar");
-    private static MouseAdapter click = new MouseAdapter() {
+    private static final MouseAdapter click = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
 
@@ -84,37 +78,69 @@ public class ViewDetalheVenda {
                 janela.dispose();
             }
             if(e.getSource() == ok) {
-                cpf = clienteTextfield.getText();
-                new ViewDetalheVenda("a",3);
-                janela2.dispose();
+                String cpf = clienteTextfield.getText();
+
+                if(ControlRegisto.VerificarVenda(cpf,"","",0) == 0){
+                    ControlVenda.novaVenda(cpf);
+                    new ViewDetalheVenda("a",3);
+                    clienteTextfield.setText(null);
+                    janela2.dispose();
+                }
+                else {
+                    mensagemErroCPF();
+                    clienteTextfield.setText(null);
+                }
             }
             if(e.getSource() == ok2) {
-                produtos.add(idTextfield.getText());
-                quant.add(quantTextfield.getText());
-                mensagemSucessoCadastroVenda();
+                String quant = quantTextfield.getText();
+                String produtos = idTextfield.getText();
+
+                if(ControlRegisto.VerificarVenda("",quant, produtos,1) == 0){
+                    idTextfield.setText(null);
+                    quantTextfield.setText(null);
+
+                    try {
+                        ControlVenda.addVenda(quant, produtos);
+                    } catch (CloneNotSupportedException ex) {
+                        ex.printStackTrace();
+                    }
+                    clickcount = true;
+                    mensagemSucessoCadastro1();
+                    new ViewDetalheVenda("",3);
+                }
+                else {
+                    mensagemErroProduto();
+                    idTextfield.setText(null);
+                    quantTextfield.setText(null);
+                }
+
             }
             if(e.getSource() == concluir) {
-                try {
-                    ControlVenda.novaVenda(cpf, produtos, quant);
-                } catch (CloneNotSupportedException ex) {
-                    ex.printStackTrace();
+                if(clickcount == true){
+                    ControlVenda.finalizaVenda();
+                    mensagemSucessoCadastro();
+                    clickcount = false;
+                    new ViewVenda(0);
+                    janela3.dispose();
+
                 }
-                new ViewVenda(0);
-                janela3.dispose();
+                else {
+                    mensagemErroVenda();
+                }
             }
         }
     };
 
     //construtor para quando clicar na tabela
     public ViewDetalheVenda(String id, int controlador) {
-        preencherVenda = ControlVenda.pegarDadosVenda(id);
+
+        List<String> preencherVenda = ControlVenda.pegarDadosVenda(id);
         janela.setIconImage(new ImageIcon("src/images/logoPombo.png").getImage());
         janela.setLayout(null);
-        janela.setVisible(true);
         janela.setResizable(false);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.getContentPane().setBackground(new Color(227, 176, 255));
-        janela.setSize(423, 460);
+        janela.setSize(825, 425);
         janela.setLocationRelativeTo(null);
         //DADOS CLIENTE
         janelaVenda();
@@ -123,8 +149,48 @@ public class ViewDetalheVenda {
         if(controlador == 1){
             janela2.setVisible(false);
             janela3.setVisible(false);
-            janela.setTitle("Detalhes do cliente");
+            janela.setVisible(true);
+            MTableProdutos dadosTabela = new MTableProdutos(ControlVenda.dadosTabela2(id));
+            janela.setTitle("Detalhes da venda");
             janela.remove(menu);
+
+
+            //TITULO DA TABELA DE PRODUTOS COMPRADOS
+            listaVenda.setText("LISTA DE PRODUTOS COMPRADOS");
+            listaVenda.setBounds(417, 20, 400, 25);
+            listaVenda.setFont(new Font("Consolas", Font.ITALIC, 23));
+
+            //TABELA DE PRODUTOS COMPRADOS
+            DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+            cellRenderer.setHorizontalAlignment(JLabel.CENTER);
+            tabelaVenda.setModel(dadosTabela);
+            tabelaVenda.setRowSelectionAllowed(false);
+            tabelaVenda.getTableHeader().setReorderingAllowed(false);
+            tabelaVenda.getTableHeader().setResizingAllowed(false);
+            tabelaVenda.getTableHeader().setBackground(new Color(101, 240, 154));
+            tabelaVenda.getTableHeader().setForeground(Color.black);
+            tabelaVenda.getTableHeader().setFont(new Font("Consolas", Font.BOLD, 15));
+            tabelaVenda.setSelectionBackground(new Color(250, 120, 154));
+            tabelaVenda.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            tabelaVenda.setFont(new Font("Consolas", Font.BOLD, 11));
+            tabelaVenda.setBackground(new Color(218, 230, 233));
+            tabelaVenda.setRowHeight(22);
+            tabelaVenda.getColumnModel().getColumn(0).setPreferredWidth(10);
+            tabelaVenda.getColumnModel().getColumn(2).setPreferredWidth(30);
+            tabelaVenda.getColumnModel().getColumn(3).setPreferredWidth(35);
+            tabelaVenda.getColumnModel().getColumn(0).setCellRenderer(cellRenderer);
+            tabelaVenda.getColumnModel().getColumn(1).setCellRenderer(cellRenderer);
+            tabelaVenda.getColumnModel().getColumn(2).setCellRenderer(cellRenderer);
+            tabelaVenda.getColumnModel().getColumn(3).setCellRenderer(cellRenderer);
+            tabelaVenda.getColumnModel().getColumn(4).setCellRenderer(cellRenderer);
+            tabelaVenda.setFocusable(false);
+            scroll3.setViewportView(tabelaVenda);
+
+
+            painelVenda.setLayout(new GridLayout());
+            painelVenda.setBorder(BorderFactory.createLineBorder(new Color(101, 1, 154), 5));
+            painelVenda.setBounds(390,50, 400,235);
+            painelVenda.add(scroll3);
 
             valorCodigaVenda.setText(preencherVenda.get(0));
             valorNome.setText(preencherVenda.get(1));
@@ -138,11 +204,13 @@ public class ViewDetalheVenda {
 
 
             menu.removeMouseListener(click);
-            menu.setBounds(30, 353, 150, 50);
-            //clienteButton.setIcon(cliente2);
+            menu.setBounds(315, 315, 150, 50);
+            menu.setIcon(new ImageIcon("src/images/voltar.png"));
             menu.setFocusable(false);
             menu.addMouseListener(click);
             janela.add(menu);
+            janela.add(painelVenda);
+            janela.add(listaVenda);
 
             preencherVenda.clear();
 
@@ -150,6 +218,7 @@ public class ViewDetalheVenda {
         else if(controlador == 2){
             selecionaCliente();
         }
+
         else if(controlador == 3){
             selecionaProduto();
         }
@@ -157,43 +226,8 @@ public class ViewDetalheVenda {
 
     }
 
-    public static void mensagemSucessoExclusao() {
-        JOptionPane.showMessageDialog(null, "Os dados foram excluidos com sucesso!", null,
-                JOptionPane.INFORMATION_MESSAGE);
-        janela.dispose();
-    }
-
-    public static void mensagemSucessoCadastroVenda() {
-        JOptionPane.showMessageDialog(null, "Produto adicionado com sucesso!", null,
-                JOptionPane.INFORMATION_MESSAGE);
-        janela.dispose();
-    }
-
-    public static void mensagemErroCadastro() {
-        JOptionPane.showMessageDialog(null,"ERRO AO SALVAR OS DADOS!\n "
-                        + "Pode ter ocorrido um dos dois erros a seguir:  \n"
-                        + "1. Nem todos os campos foram preenchidos \n"
-                        + "2. CPF, DDD e telefone nao contem apenas numeros \n"
-                        + "3  Nome e Nome do cartao nao contem apenas caracteres validos,", null,
-                JOptionPane.ERROR_MESSAGE);
-    }
-    //metodo para pegar o dados digitados
-    public static List<String> dadosDigitados(){
-        List<String> dadosNovos = new ArrayList<>();
-        dadosNovos.add(valorNome.getText());
-        dadosNovos.add(valorCPF.getText());
-        dadosNovos.add(valorNomeLoja.getText());
-        dadosNovos.add(valorCNPJ.getText());
-        dadosNovos.add(valorDataVenda.getText());
-        dadosNovos.add(valorFinal.getText());
-        dadosNovos.add(valorFrete.getText());
-        dadosNovos.add(valorFormaPagamento.getText());
-
-        return dadosNovos;
-    }
-
     private void selecionaCliente(){
-        dadosTabela = new MTableCliente(ControlCliente.dadosTabela(ControlCliente.getDadosR()));
+        MTableCliente dadosTabela = new MTableCliente(ControlCliente.dadosTabela(ControlCliente.getDadosR()));
         tabelaCliente.setModel(dadosTabela);
         scroll.setViewportView(tabelaCliente);
         scroll.setBackground(new Color(101, 240, 154));
@@ -212,7 +246,6 @@ public class ViewDetalheVenda {
         //DEFINIÇÕES DA TABELA
         DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
         cellRenderer.setHorizontalAlignment(JLabel.CENTER);
-        tabelaCliente.setRowSelectionAllowed(false);
         tabelaCliente.getTableHeader().setReorderingAllowed(false);
         tabelaCliente.getTableHeader().setResizingAllowed(false);
         tabelaCliente.getTableHeader().setBackground(new Color(101, 240, 154));
@@ -233,6 +266,7 @@ public class ViewDetalheVenda {
 
         ok.removeMouseListener(click);
         ok.setBounds(170,500, 30,25);
+        ok.setIcon(new ImageIcon("src/images/OK.png"));
         ok.addMouseListener(click);
         labelFiltro.setBounds(25,475, 300,30);
         clienteTextfield.setBounds(25,500, 140, 25);
@@ -240,6 +274,7 @@ public class ViewDetalheVenda {
         janela2.setVisible(true);
         janela.setVisible(false);
         janela3.setVisible(false);
+
         janela2.add(ok);
         janela2.add(labelFiltro);
         janela2.add(clienteTextfield);
@@ -257,8 +292,8 @@ public class ViewDetalheVenda {
 
     private void selecionaProduto(){
 
-        dadosTabela1 = new MTableMovel(ControlEstoque.tabelaMovel());
-        dadosTabela2 = new MTableEletro(ControlEstoque.tabelaEletro());
+        MTableMovel dadosTabela1 = new MTableMovel(ControlEstoque.tabelaMovel());
+        MTableEletro dadosTabela2 = new MTableEletro(ControlEstoque.tabelaEletro());
         tabelaMovel.setModel(dadosTabela1);
         scroll1.setViewportView(tabelaMovel);
         tabelaEletro.setModel(dadosTabela2);
@@ -346,16 +381,19 @@ public class ViewDetalheVenda {
 
         //BOTAO CONCLUIR
         concluir.removeMouseListener(click);
-        concluir.setBounds(485,330, 150,50);
+        concluir.setBounds(485,460, 150,50);
+        concluir.setIcon(new ImageIcon("src/images/salvar.png"));
         concluir.setFocusable(false);
         concluir.addMouseListener(click);
 
+        ok2.removeMouseListener(click);
+        ok2.setBounds(620,310, 30,25);
+        ok2.setIcon(new ImageIcon("src/images/OK.png"));
         ok2.addMouseListener(click);
-        ok2.setBounds(620,290, 30,25);
-        labelquant.setBounds(475,200, 175,25);
-        quantTextfield.setBounds(475,230, 175,25);
-        labelid.setBounds(475,260, 175,25);
-        idTextfield.setBounds(475,290, 140,25);
+        labelquant.setBounds(475,220, 175,25);
+        quantTextfield.setBounds(475,250, 175,25);
+        labelid.setBounds(475,280, 175,25);
+        idTextfield.setBounds(475,310, 140,25);
 
         janela3.setVisible(true);
         janela.setVisible(false);
@@ -456,6 +494,41 @@ public class ViewDetalheVenda {
         valorFormaPagamento.setBounds(180,260, 80,25);
         janela.add(valorFormaPagamento);
         valorFormaPagamento.setText(null);
+    }
+
+    private static void mensagemSucessoCadastro() {
+        JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!", null,
+                JOptionPane.INFORMATION_MESSAGE);
+        janela.dispose();
+    }
+
+    private static void mensagemSucessoCadastro1() {
+        JOptionPane.showMessageDialog(null, "Produto adicionado com sucesso!", null,
+                JOptionPane.INFORMATION_MESSAGE);
+        janela.dispose();
+    }
+
+    private static void mensagemErroVenda() {
+        JOptionPane.showMessageDialog(null,
+                "NAO FORAM ADICIONADOS PRODUTOS NA VENDA!", null,
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+    private static void mensagemErroCPF() {
+        JOptionPane.showMessageDialog(null,
+                "CPF INVALIDO OU INEXISTENTE!", null,
+                JOptionPane.ERROR_MESSAGE);
+    }
+    private static void mensagemErroProduto() {
+        JOptionPane.showMessageDialog(null,
+                "ERRO AO ADICIONAR PRODUTO!\n" +
+                        "Pode ter ocorrido algum dos erros a seguir: \n"+
+                        "1. Ha campos vazios.\n"+
+                        "2. Nao foi digitado um valor positivo para quantidade \n"+
+                        "3. A quantidade digitada excede a quantidade em estoque.\n"+
+                        "4. O id digitados nao existe.\n"+
+                        "5. Nao foram digitados apenas numeros para quantidade ou id.", null,
+                JOptionPane.ERROR_MESSAGE);
     }
 
 }

@@ -17,11 +17,6 @@ public class Endereco {
     public Endereco(){
     }
 
-    @Override
-    public String toString() {
-        return  "UF[" +uf+ "] Cidade[" +cidade+ "] Bairro[" +bairro+ "] Logradouro[" +logradouro+ "]";
-    }
-
     //GETS E SETS
     public String getUf() {
         return uf;

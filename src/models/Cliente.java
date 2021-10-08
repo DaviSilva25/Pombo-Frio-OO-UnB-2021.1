@@ -21,21 +21,6 @@ public class Cliente {
     public Cliente(){
     }
 
-    @Override
-    public String toString() {
-        return  " Cliente:" + "\n" +
-                " Nome: " + nome + "\n" +
-                " CPF: " + cpf + "\n" +
-                " Data de Nascimento: " + dataNascimento + "\n" +
-                " Endereco: " + endereco + "\n" +
-                " Telefone: " + telefone + "\n" +
-                " Cartao: " + cartao + "\n";
-    }
-    //METODO PARA IMPRIMIR APENAS ALGUNS ATRIBUTOS NA SAIDA
-    public String imprimirCliente(){
-        return  nome+" | CPF("+cpf+") | UF("+ endereco.getUf()+ ") | Telefone "+telefone;
-    }
-
     //GETS E SETS
     public String getNome() {
         return nome;

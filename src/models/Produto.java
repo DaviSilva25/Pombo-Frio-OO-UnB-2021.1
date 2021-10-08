@@ -26,21 +26,6 @@ public abstract class Produto {
 
 	}
 
-	//METEDO ABSTRADO A SER IMPLEMENTADO NAS CLASSES FILHAS
-	public abstract String concatenador();
-
-	@Override
-	public String toString() {
-		return  " ID do Produto: " + idProduto + "\n" +
-				" Nome: " + nome + "\n" +
-				" Descricao: " + descricao + "\n" +
-				" Cor: " + cor + "\n" +
-				" Preco: " + preco + "\n" +
-				" Tamanho: " + tamanho + "\n" +
-				" Fabricante: " + fabricante + "\n" +
-				" Quantidade: " + quantidade;
-	}
-
 	//GETS E SETS
 	public int getIdProduto() {
 		return idProduto;

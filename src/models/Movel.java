@@ -16,20 +16,6 @@ public class Movel extends Produto implements Cloneable {
         super();
     }
 
-    @Override//METODO DA CLASSE PRODUTO
-    public String concatenador(){
-        return  "ID["+this.idProduto+ "], Nome:[" +this.nome+ "], Preco:[R$ " +this.preco+ "], Fabricante:[" +this.fabricante+ "], " +
-                "Quantidade: ["+this.quantidade+ "]";
-    }
-
-    @Override
-    public String toString() {
-        return  " Movel: " + "\n" +
-                  super.toString() + "\n" +
-                " ambiente: " + ambiente + "\n" +
-                " material: " + material + "\n";
-    }
-
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();

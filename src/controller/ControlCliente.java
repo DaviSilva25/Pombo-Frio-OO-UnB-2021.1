@@ -5,10 +5,10 @@ import models.Endereco;
 import models.Telefone;
 import java.util.*;
 
-
 public class ControlCliente {
-    private static List<String[]> dadosCliente = new ArrayList<>();
-    private static List<String> dadosViewCliente = new ArrayList<>();
+    //DECLARACAO
+    private static final List<String[]> dadosCliente = new ArrayList<>();
+    private static final List<String> dadosViewCliente = new ArrayList<>();
     private static String cartao;
     private static ControlRegisto dadosR;
     static {
@@ -25,11 +25,12 @@ public class ControlCliente {
     //METODO QUE DEFINE OS ELEMENTOS QUE IRAO APARECER NA TABELA
     public static List<String[]> dadosTabela(ControlRegisto clienteD){
         dadosCliente.clear();
+        //laco que compara a string recebida com o nome ou cpf dos clientes existentes
         for(int i=0;i< clienteD.getDados().getCliente().size(); i++){
-            if(clienteD.getDados().getCliente().get(i).getCartao() != null)
-                cartao = "SIM";
-            else
+            if(clienteD.getDados().getCliente().get(i).getCartao().getNome().equals(""))
                 cartao = "NAO";
+            else
+                cartao = "SIM";
 
             dadosCliente.add(new String[]{clienteD.getDados().getCliente().get(i).getNome(),
                                       clienteD.getDados().getCliente().get(i).getCpf(),
@@ -41,14 +42,16 @@ public class ControlCliente {
     }
 
     //METODO QUE DEFINE OS ELEMENTOS QUE IRAO APARECER NA TABELA APOS O FILTRO
-    public static List<String[]> filtrarTabela(ControlRegisto clienteD, String nome){
+    public static List<String[]> filtrarTabela(ControlRegisto clienteD, String dado){
         dadosCliente.clear();
+        //laco que compara a string recebida com o nome ou cpf dos clientes existentes
         for(int i=0;i< clienteD.getDados().getCliente().size(); i++){
-            if(nome.equals(clienteD.getDados().getCliente().get(i).getNome())){
-                if(clienteD.getDados().getCliente().get(i).getCartao() != null)
-                    cartao = "SIM";
-                else
+            if((clienteD.getDados().getCliente().get(i).getNome().contains(dado) && !dado.equals(" "))
+                    || dado.equals(clienteD.getDados().getCliente().get(i).getCpf())){
+                if(clienteD.getDados().getCliente().get(i).getCartao().getNome().equals(""))
                     cartao = "NAO";
+                else
+                    cartao = "SIM";
 
                 dadosCliente.add(new String[]{clienteD.getDados().getCliente().get(i).getNome(),
                         clienteD.getDados().getCliente().get(i).getCpf(),
@@ -63,6 +66,7 @@ public class ControlCliente {
 
     //METODO PARA ADCIONAR CLIENTE
     public static void adicionarCliente(List<String> dadosCliente){
+
         Cliente novoCliente = new Cliente();
         Telefone novoTelefone = new Telefone();
         Endereco novoEndereco = new Endereco();
@@ -72,29 +76,33 @@ public class ControlCliente {
         novoCliente.setCpf(dadosCliente.get(1));
         novoCliente.setDataNascimento(dadosCliente.get(2));
 
+        novoCliente.setTelefone(novoTelefone);
         novoTelefone.setDdd(dadosCliente.get(3));
         novoTelefone.setNumero(dadosCliente.get(4));
-        novoCliente.setTelefone(novoTelefone);
 
+        novoCliente.setEndereco(novoEndereco);
         novoEndereco.setUf(dadosCliente.get(5));
         novoEndereco.setCidade(dadosCliente.get(6));
         novoEndereco.setBairro(dadosCliente.get(7));
         novoEndereco.setLogradouro(dadosCliente.get(8));
-        novoCliente.setEndereco(novoEndereco);
 
+        novoCliente.setCartao(novoCartao);
         novoCartao.setNome(dadosCliente.get(9));
         novoCartao.setNumero(dadosCliente.get(10));
         novoCartao.setDataVencimento(dadosCliente.get(11));
         novoCartao.setCvv(dadosCliente.get(12));
-        novoCliente.setCartao(novoCartao);
 
+        ControlRegisto.getDados().getTelefone().add(novoTelefone);
+        ControlRegisto.getDados().getEndereco().add(novoEndereco);
+        ControlRegisto.getDados().getCartao().add(novoCartao);
         ControlRegisto.getDados().getCliente().add(novoCliente);
     }
 
-    //METODO PARA ADQUIRIR O DADOS PARA A TELA DE UM CLIENTE
+    //METODO PARA ADQUIRIR OS DADOS PARA A TELA DE UM CLIENTE
     public static List<String> pegarDadosCliente(ControlRegisto clienteD,String cpf){
         int i = 0;
         dadosViewCliente.clear();
+        //laco que compara a string recebida com o cpf dos clientes existentes
         for(int index=0;index< clienteD.getDados().getCliente().size(); index++)
             if(clienteD.getDados().getCliente().get(index).getCpf().equals(cpf))
                 i = index;
@@ -117,7 +125,7 @@ public class ControlCliente {
         return dadosViewCliente;
     }
 
-    //METODO PARA ALTERAR O DADOS DA TELA DE UM CLIENTE
+    //METODO PARA ALTERAR OS DADOS DA TELA DE UM CLIENTE
     public static void alterarDadosCliente(ControlRegisto clienteD,String cpf, List<String> dadosCliente){
         List<String> alteraDados = new ArrayList<>(dadosCliente);
 
@@ -141,10 +149,8 @@ public class ControlCliente {
         clienteD.getDados().getCliente().get(i).getCartao().setCvv(alteraDados.get(12));
     }
 
-    //METODO PARA ALTERAR O DADOS DA TELA DE UM CLIENTE
-    public static void excluirCliente(ControlRegisto clienteD,String cpf, List<String> dadosCliente){
-        List<String> alteraDados = new ArrayList<>(dadosCliente);
-
+    //METODO PARA EXCLUIR OS DADOS DA TELA DE UM CLIENTE
+    public static void excluirCliente(ControlRegisto clienteD,String cpf){
         int i = 0;
         for(int index=0;index< clienteD.getDados().getCliente().size(); index++)
             if(clienteD.getDados().getCliente().get(index).getCpf().equals(cpf))
@@ -152,13 +158,11 @@ public class ControlCliente {
         clienteD.getDados().getCliente().remove(i);
     }
 
+    //GET
     public static ControlRegisto getDadosR() {
         return dadosR;
     }
 
-    public static void setDadosR(ControlRegisto dadosR) {
-        ControlCliente.dadosR = dadosR;
-    }
 }
 
 

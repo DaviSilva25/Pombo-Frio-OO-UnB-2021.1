@@ -19,21 +19,6 @@ public class Eletrodomestico extends Produto implements Cloneable{
         super();
     }
 
-    @Override //METODO SOBRESCRITO DA CLASSE PRODUTO
-    public String concatenador() {
-        return "ID["+(this.idProduto)+ "], Nome:[" +this.nome+ "], Preco:[R$ " +this.preco+ "], Fabricante:[" +this.fabricante+ "], " +
-                "Quantidade: ["+this.quantidade+"]";
-    }
-
-    @Override
-    public String toString() {
-        return  " Eletrodomestico:"+ "\n" +
-                  super.toString() + "\n" +
-                " capacidade: " + capacidade + "L\n" +
-                " voltagem: " + voltagem + "v\n" +
-                " Potencia: " + potencia + "w\n";
-    }
-
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();

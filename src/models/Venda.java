@@ -1,25 +1,26 @@
 package models;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.time.LocalDate;
+
 
 public class Venda {
 
     //ATRIBUTOS PROPIOS
     private String codigoDeVenda;
-    private final List<LocalDate> dataVenda = new ArrayList<>();
+    private String dataVenda = "";
     private double valorFinal = 0;
     private String formaDePagamento;
     private double frete;
 
     //ATRIBUTOS ASSOCIADOS
-    private Boleto boleto = new Boleto();
-    private Cliente cliente = new Cliente();
-    private Loja loja = new Loja();
-    private List<Movel> moveisVenda = new ArrayList<>();
-    private List<Eletrodomestico> eletrosVenda = new ArrayList<>();
+    private final Boleto boleto = new Boleto();
+    private Cliente cliente;
+    private final Loja loja;
+    private final List<Movel> moveisVenda = new ArrayList<>();
+    private final List<Eletrodomestico> eletrosVenda = new ArrayList<>();
 
     //VARIAVEIS AUXILIARES
-    private int contaQnt = 0;
     private static int setaVenda = 1;
 
     //CONSTRUTORES VENDA
@@ -29,9 +30,6 @@ public class Venda {
         this.setDataVenda();
         this.setFormaDePagamento(formaDePagamento);
         this.setFrete();
-    }
-    public Venda(){
-        this.setDataVenda();
     }
 
     //METODO(SOBRECARREGADO) EM ADIOCIONAR(MOVEL OU ELETRODOMESTISCO) EM VENDA
@@ -43,7 +41,6 @@ public class Venda {
         movel.setQuantidade(movel.getQuantidade()-quantMovel);
 
         valorFinal += movel.getPreco()*quantMovel;
-        contaQnt += quantMovel;
     }
     public void adicionar(Eletrodomestico eletro, int quantEletro) throws CloneNotSupportedException {
 
@@ -53,7 +50,6 @@ public class Venda {
         eletro.setQuantidade(eletro.getQuantidade()-quantEletro);
 
         valorFinal += eletro.getPreco()*quantEletro;
-        contaQnt += quantEletro;
     }
 
     //GETS E SETS
@@ -66,12 +62,12 @@ public class Venda {
         setaVenda +=1;
     }
 
-    public List<LocalDate> getDataVenda() {
+    public String getDataVenda() {
         return dataVenda;
     }
 
     public void setDataVenda() {
-        dataVenda.add(LocalDate.now());
+        dataVenda = (LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 
     public double getValorFinal() {
@@ -121,30 +117,6 @@ public class Venda {
             this.frete = 40.43;
     }
 
-    public Boleto getBoleto() {
-        return boleto;
-    }
-
-    public void setBoleto(Boleto boleto) {
-        this.boleto = boleto;
-    }
-
-    public List<Movel> getMoveisVenda() {
-        return moveisVenda;
-    }
-
-    public void setMoveisVenda(List<Movel> moveisVenda) {
-        this.moveisVenda = moveisVenda;
-    }
-
-    public List<Eletrodomestico> getEletrosVenda() {
-        return eletrosVenda;
-    }
-
-    public void setEletrosVenda(List<Eletrodomestico> eletrosVenda) {
-        this.eletrosVenda = eletrosVenda;
-    }
-
     public Cliente getCliente() {
         return cliente;
     }
@@ -157,7 +129,11 @@ public class Venda {
         return loja;
     }
 
-    public void setLoja(Loja loja) {
-        this.loja = loja;
+    public List<Movel> getMoveisVenda() {
+        return moveisVenda;
+    }
+
+    public List<Eletrodomestico> getEletrosVenda() {
+        return eletrosVenda;
     }
 }
