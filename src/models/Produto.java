@@ -1,5 +1,9 @@
 package models;
-
+/**
+ * Classe modelo abstrata Produto
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public abstract class Produto {
 	//ATRIBUTOS PROPIOS
 	protected int idProduto;
@@ -10,7 +14,19 @@ public abstract class Produto {
 	protected String tamanho;
 	protected String fabricante;
 	protected int quantidade;
-
+	
+	/**
+	 * Construtor Produto
+	 * 
+	 * @param idProduto int representa o id produto. 
+	 * @param nome String representa o nome produto.
+	 * @param descricao String representa o descricao produto.
+	 * @param cor String representa o cor produto.
+	 * @param preco double representa o preco produto.
+	 * @param tamanho String representa o tamanho produto.
+	 * @param fabricante String representa o fabricante produto.
+	 * @param quantidade int representa o quantidade produto.
+	 */
 	//CONSTRUTORES PRODUTO
 	public Produto(int idProduto, String nome, String descricao, String cor, double preco, String tamanho, String fabricante, int quantidade) {
 		this.idProduto = idProduto;

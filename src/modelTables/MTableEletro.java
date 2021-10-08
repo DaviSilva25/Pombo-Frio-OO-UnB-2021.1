@@ -2,12 +2,22 @@ package modelTables;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
-
+/**
+ * Classe MTableModel Eletro
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
+@SuppressWarnings("serial")
 public class MTableEletro extends AbstractTableModel {
 
     private final String[] colunas = {"ID", "Nome", "Preco R$", "Quantidade", "Cor"};
     private static List<String[]> eletroDados;
-
+    
+    /**
+     * Contrutor da MTableEletro
+     * 
+     * @param listaEletro List<String[]> representa a lista de array de Strings que irao compor a tabela.
+     */
     public MTableEletro(List<String[]> listaEletro){
         eletroDados = listaEletro;
     }

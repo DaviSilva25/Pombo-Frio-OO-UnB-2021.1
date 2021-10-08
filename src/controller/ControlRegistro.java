@@ -1,32 +1,57 @@
 package controller;
 
 import models.Registro;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ControlRegisto {
+/**
+ * Classe para controle das acoes relacionadas ao dados do registro
+ * 
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
+
+
+@SuppressWarnings("static-access")
+public class ControlRegistro {
+	
     //DECLARACAO
     private static final Registro dados = new Registro();
     private static final String[] sigla = {"DF", "MT", "GO", "MS", "SP", "RJ", "ES", "MG", "SC", "PR", "RS", "PB", "MA",
             "CE", "PI", "RN", "PE", "AL", "SE", "BA", "AM", "PA", "TO", "RO", "RR", "AC", "AP"};
     private static final List<String> siglas = new ArrayList<>(Arrays.asList(sigla));
-
-    public ControlRegisto() throws CloneNotSupportedException {
-        dados.autoCadastro();
+    
+    /**
+     * Contrutor da classe ControlRegistro
+     */
+    public ControlRegistro(){
+        try {
+			dados.autoCadastro();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
-
-
+   
+    
+    /**
+     * Metodo que recebe uma lista de strings referente aos dados de um cliente e apos isso
+     * verifica a validade dos campos necessarios.
+     * 
+     * @param lista a lista de Strings referentes aos dados de um cliente.
+     * @param a um numero inteiro que verifica a necessidade da verifcacao do CPF ou nao.
+     * @return um numero inteiro que representa a quantidade de irregularidades encontradas.
+     */
     //METODOS PARA VALIDACAO DE CLIENTE
-    public static int VerificarCliente(List<String> lista, int a){
+    public static int verificarCliente(List<String> lista, int a){
         int cont = 0;
 
         //VERIFICACAO SE HA ALGUM CAMPO NULL
         for (int i=0; i < 9; i++){
             if(cont != 0)
                 break;
-            if(lista.get(i).equals(""))
+            if(lista.get(i).isEmpty())
                 cont++;
         }
 
@@ -41,9 +66,11 @@ public class ControlRegisto {
         }
         //VERIFICACAO DO CPF
         if(a == 0){
-            for(int index=0;index< dados.getCliente().size(); index++)
-                if(dados.getCliente().get(index).getCpf().equals(lista.get(1)))
+            for(int index=0;index< ControlCliente.getDadosR().getDados().getCliente().size(); index++)
+                if(ControlCliente.getDadosR().getDados().getCliente().get(index).getCpf().equals(lista.get(1))) {
                     cont++;
+                    break;
+                    }
 
             for (int i=0; i < lista.get(1).length(); i++){
                 if(lista.get(1).length() != 11)
@@ -97,7 +124,15 @@ public class ControlRegisto {
 
         return cont;
     }
-    public static int VerificarCartao(List<String> lista){
+    
+    /**
+     * Metodo que recebe uma lista de strings referente aos dados do cartao de um cliente
+     *  e apos isso verifica a validade dos campos necessarios.
+     * 
+     * @param lista a lista de Strings referentes aos dados do cartao de um cliente.
+     * @return um numero inteiro que representa a quantidade de irregularidades encontradas.
+     */
+    public static int verificarCartao(List<String> lista){
         int cont = 0;
         for (int i=8; i < lista.size(); i++){
             if(lista.get(i).equals(""))
@@ -105,9 +140,17 @@ public class ControlRegisto {
         }
         return cont;
     }
-
+    
+    /**
+     * Metodo que recebe uma lista de strings referente aos dados de um movel ou eletrodomestico
+     *  e apos isso verifica a validade dos campos necessarios.
+     * 
+     * @param lista a lista de Strings referentes aos dados de um movel ou eletrodomestico.
+     * @param a um numero inteiro que verifica se os campos analisados serao de um movel ou de um eletrodomestico.
+     * @return um numero inteiro que representa a quantidade de irregularidades encontradas.
+     */
     //METODOS PARA VALIDACAO DE ESTOQUE
-    public static int VerificarEstoque(List<String> lista, int a){
+    public static int verificarEstoque(List<String> lista, int a){
         int cont = 0;
 
         //VERIFICACAO SE HA ALGUM CAMPO NULL
@@ -191,45 +234,57 @@ public class ControlRegisto {
         }
         return cont;
     }
-
+    
+    /**
+     * Metodo que recebe String cpf, String quantidade, String id e um inteiro a, que determina a ordem da analise,
+     * e apos isso verifica a validade das Strings. 
+     * 
+     * @param cpf uma String que determina qual cliente ira compor a venda.
+     * @param quantidade uma String que determina a quantidade do produto que ira compor a venda.
+     * @param id uma String que determina qual sera o produto a compor a venda.
+     * @param a um inteiro que determina o que sera analisado no metodo.
+     * @return um numero inteiro que representa a quantidade de irregularidades encontradas.
+     */
     //METODOS PARA VALIDACAO DE VENDA
-    public static int VerificarVenda(String cpf, String quantidade, String id, int a){
+	public static int verificarVenda(String cpf, String quantidade, String id, int a){
         int cont = 0;
         int cont1 = 0;
         int cont2 = 0;
-
+        
+        //verificacao cpf da venda
         if(a == 0) {
 
-            for (int i = 0; i < dados.getCliente().size(); i++) {
+            for (int i = 0; i < ControlCliente.getDadosR().getDados().getCliente().size(); i++) {
 
-                if (cpf.equals(dados.getCliente().get(i).getCpf()))
-                    cont1++;
+                if (cpf.equals(ControlCliente.getDadosR().getDados().getCliente().get(i).getCpf()) == true) {
+                    cont1 = 1;}
 
             }
 
             if(cont1 == 0)
-                cont++;
+                cont = 1;
 
         }
-
+        //verificacao quantidade digitada
         if(a == 1) {
 
-            for (int i = 0; i < dados.getMovel().size(); i++) {
+            for (int i = 0; i < ControlCliente.getDadosR().getDados().getMovel().size(); i++) {
 
-                if (id.equals(String.valueOf(dados.getMovel().get(i).getIdProduto()))){
-                    if(Integer.parseInt(quantidade) > dados.getMovel().get(i).getQuantidade())
+                if (id.equals(String.valueOf(ControlCliente.getDadosR().getDados().getMovel().get(i).getIdProduto()))){
+                    if(Integer.parseInt(quantidade) > ControlCliente.getDadosR().getDados().getMovel().get(i).getQuantidade())
                         cont++;
-                    cont2++;
+                    cont2 = 1;
                 }
 
             }
 
-            for (int i = 0; i < dados.getEletro().size(); i++) {
+            for (int i = 0; i < ControlCliente.getDadosR().getDados().getEletro().size(); i++) {
 
-                if (id.equals(String.valueOf(dados.getEletro().get(i).getIdProduto())))
-                    if(Integer.parseInt(quantidade) > dados.getEletro().get(i).getQuantidade())
+                if (id.equals(String.valueOf(ControlCliente.getDadosR().getDados().getEletro().get(i).getIdProduto()))) {
+                    if(Integer.parseInt(quantidade) > ControlCliente.getDadosR().getDados().getEletro().get(i).getQuantidade())
                         cont++;
-                    cont2++;
+                    cont2 = 1;
+                    }
 
             }
 
@@ -251,9 +306,16 @@ public class ControlRegisto {
 
         return cont;
     }
-
+	
+	/**
+	 * Metodo que recebe uma lista de strings referente aos dados da loja
+     * e apos isso verifica a validade dos campos necessarios.
+     * 
+	 * @param lista a lista de Strings referentes aos dados de uma loja.
+	 * @return um numero inteiro que representa a quantidade de irregularidades encontradas.
+	 */
     //METODOS PARA VALIDACAO DE LOJA
-    public static int VerificarLoja(List<String> lista){
+    public static int verificarLoja(List<String> lista){
         int cont = 0;
 
         //VERIFICACAO SE HA ALGUM CAMPO NULL

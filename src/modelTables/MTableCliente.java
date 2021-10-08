@@ -1,14 +1,26 @@
 package modelTables;
 
 import javax.swing.table.AbstractTableModel;
+
 import java.util.Comparator;
 import java.util.List;
+/**
+ * Classe MTableModel Cliente
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 
+@SuppressWarnings("serial")
 public class MTableCliente extends AbstractTableModel {
 
     private final String[] colunas = {"Nome", "CPF", "UF", "Telefone", "Tem cartao?"};
     private static List<String[]> clienteDados;
-
+    
+    /**
+     * Contrutor da MTableCliente
+     * 
+     * @param listaCli List<String[]> representa a lista de array de Strings que irao compor a tabela.
+     */
     public MTableCliente(List<String[]> listaCli){
         listaCli.sort(Comparator.comparing(A -> A[0]));
         clienteDados = listaCli;

@@ -1,12 +1,24 @@
 package models;
-
+/**
+ * Classe modelo Endereco
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public class Endereco {
     //METODOS PROPIOS
     private String uf;
     private String cidade;
     private String bairro;
     private String logradouro;
-
+    
+    /**
+     * Construtor de endereco
+     * 
+     * @param uf String que representa uf de endereco.
+     * @param cidade String que representa cidade de endereco.
+     * @param bairro String que representa bairro de endereco.
+     * @param logradouro String que representa logradouro de endereco.
+     */
     //CONSTRUTOR ENDERECO
     public Endereco(String uf, String cidade, String bairro, String logradouro) {
         this.uf = uf;

@@ -1,7 +1,7 @@
 package view;
 
 import controller.ControlEstoque;
-import controller.ControlRegisto;
+import controller.ControlRegistro;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Classe View Detalhe Movel
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public class ViewDetalheMovel {
 
     //labels e textfields de movel
@@ -48,7 +52,7 @@ public class ViewDetalheMovel {
             if(e.getSource() == salvar) {
 
                 //verificacao dos dados digitados
-                if (ControlRegisto.VerificarEstoque(dadosDigitados(),0) == 0){
+                if (ControlRegistro.verificarEstoque(dadosDigitados(),0) == 0){
 
                     ControlEstoque.alterarDadosMovel(valorId.getText(), ViewDetalheMovel.dadosDigitados());
                     mensagemSucessoCadastro();
@@ -65,7 +69,7 @@ public class ViewDetalheMovel {
             if(e.getSource() == salvar2) {
 
                 //verificacao dos dados digitados
-                if (ControlRegisto.VerificarEstoque(dadosDigitados(),0) == 0){
+                if (ControlRegistro.verificarEstoque(dadosDigitados(),0) == 0){
 
                     ControlEstoque.adicionarMovel(dadosDigitados());
                     mensagemSucessoCadastro1();
@@ -94,8 +98,13 @@ public class ViewDetalheMovel {
 
         }
     };
-
-
+    
+    /**
+     * Construtor da ViewDetalheMovel
+     * 
+     * @param id String que serve para localizar o Movel que foi selecionado na Jtable.
+     * @param controlador int que altera a forma que a janela sera apresentada.
+     */
     public ViewDetalheMovel(String id, int controlador){
 
         //preenche a lista de Strings com os dados do movel que tem o id do parametro do construtor
@@ -176,7 +185,13 @@ public class ViewDetalheMovel {
         }
 
     }
-
+    
+    /**
+     * Metodo que adiciona os dados digitados nos JtextFields da ViewDetalheMovel em uma lista
+     * de Strings para uso posterior na ControlEstoque.
+     * 
+     * @return a lista de Strings com os dados dos JtextFields da ViewDetalheMovel.
+     */
     //metodo para pegar o dados digitados nos textfields
     public static List<String> dadosDigitados(){
 
@@ -194,7 +209,10 @@ public class ViewDetalheMovel {
 
         return dadosNovos;
     }
-
+    
+    /**
+     * Metodo para organizar os labels e textfields da ViewDetalheMovel
+     */
     //metodo para organizar na janela os dados do movel
     private void janelaMovel(){
 
@@ -270,25 +288,37 @@ public class ViewDetalheMovel {
         valorMaterial.setText(null);
 
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de sucesso apos uma excluisao de movel.
+     */
     private static void mensagemSucessoExclusao() {
         JOptionPane.showMessageDialog(null, "Movel excluido com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de sucesso apos uma alteracao em um movel.
+     */
     private static void mensagemSucessoCadastro() {
         JOptionPane.showMessageDialog(null, "Movel salvo com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de sucesso apos um cadastro de movel.
+     */
     private static void mensagemSucessoCadastro1() {
         JOptionPane.showMessageDialog(null, "Novo movel salvo com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de erro caso alguma irregularidade tenha ocorrido.
+     */
     private static void mensagemErroCadastro() {
         JOptionPane.showMessageDialog(null,
                         "ERRO AO SALVAR OS DADOS!\n" +

@@ -4,7 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+ * Classe View Menu
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public class ViewMenu{
     private static final JFrame janela = new JFrame();
     private static final JPanel clientePanel = new JPanel();
@@ -41,11 +45,17 @@ public class ViewMenu{
             }
         }
     };
-
+    /**
+     * Metodo main do programa
+     * @param args
+     */
     public static void main(String[] args) {
         new ViewMenu();
     }
-
+    
+    /**
+     * Construtor da ViewMenu
+     */
     public ViewMenu(){
 
         janela.setLayout(null);
@@ -57,13 +67,13 @@ public class ViewMenu{
         logoPanel.setBounds(17,20, 301,200);
 
         //Organiza os componentes de cliente no menu
-        ClienteMenu();
+        clienteMenu();
         //Organiza os componentes de estoque no menu
-        EstoqueMenu();
+        estoqueMenu();
         //Organiza os componentes de venda no menu
-        VendaMenu();
+        vendaMenu();
         //Organiza os componentes de loja no menu
-        LojaMenu();
+        lojaMenu();
 
         //definicoes da janela
         janela.setSize(350,670);
@@ -81,9 +91,11 @@ public class ViewMenu{
         janela.add(lojaPanel);
     }
 
-
+    /**
+     * Metodo que organiza o botao cliente na janela menu
+     */
     //ESTRUTURA DO CLIENTE NO MENU
-    public void ClienteMenu(){
+    public void clienteMenu(){
         JLabel clienteLabel = new JLabel();
 
         ImageIcon cliente = new ImageIcon("src/images/cliente.png");
@@ -107,9 +119,12 @@ public class ViewMenu{
         clientePanel.add(clienteLabel);
         clientePanel.add(clienteButton);
     }
-
+    
+    /**
+     * Metodo que organiza o botao estoque na janela menu
+     */
     //ESTRUTURA DO ESTOQUE NO MENU
-    public void EstoqueMenu(){
+    public void estoqueMenu(){
         JLabel estoqueLabel = new JLabel();
 
         ImageIcon estoque = new ImageIcon("src/images/estoque.png");
@@ -133,9 +148,12 @@ public class ViewMenu{
         estoquePanel.add(estoqueLabel);
         estoquePanel.add(estoqueButton);
     }
-
+    
+    /**
+     * Metodo que organiza o botao venda na janela menu
+     */
     //ESTRUTURA DA VENDA NO MENU
-    public void VendaMenu(){
+    public void vendaMenu(){
         JLabel vendaLabel = new JLabel();
 
         ImageIcon venda = new ImageIcon("src/images/venda.png");
@@ -159,9 +177,12 @@ public class ViewMenu{
         vendaPanel.add(vendaLabel);
         vendaPanel.add(vendaButton);
     }
-
+    
+    /**
+     * Metodo que organiza o botao loja na janela menu
+     */
     //ESTRUTURA DA LOJA NO MENU
-    public void LojaMenu(){
+    public void lojaMenu(){
         JLabel lojaLabel = new JLabel();
 
         ImageIcon loja = new ImageIcon("src/images/loja.png");

@@ -7,7 +7,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+ * Classe View Cliente
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public class ViewCliente{
     //DECLARACAO
     private static final JFrame janela = new JFrame("CLIENTE");
@@ -54,7 +58,11 @@ public class ViewCliente{
             }
         }
     };
-
+    /**
+     * Construtor da classe ViewCliente
+     * 
+     * @param a int que altera a forma que a janela sera apresentada.
+     */
     public ViewCliente(int a){
 
         // JANELA APOS FILTRO
@@ -178,7 +186,10 @@ public class ViewCliente{
             janela.add(painel);
 
     }
-
+    
+    /**
+     * Metodo que organiza os botoes da classe ViewCliente em um Jpanel.
+     */
     public void painelBotoes(){
 
         //DEFINICOES DO PAINEL

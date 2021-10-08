@@ -2,7 +2,7 @@ package view;
 
 import controller.ControlCliente;
 import controller.ControlEstoque;
-import controller.ControlRegisto;
+import controller.ControlRegistro;
 import controller.ControlVenda;
 import modelTables.*;
 
@@ -12,7 +12,11 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
-
+/**
+ * Classe View Detalhe Venda
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public class ViewDetalheVenda {
 
     private static final JFrame janela = new JFrame("VENDA");
@@ -80,7 +84,7 @@ public class ViewDetalheVenda {
             if(e.getSource() == ok) {
                 String cpf = clienteTextfield.getText();
 
-                if(ControlRegisto.VerificarVenda(cpf,"","",0) == 0){
+                if(ControlRegistro.verificarVenda(cpf,"","",0) == 0){
                     ControlVenda.novaVenda(cpf);
                     new ViewDetalheVenda("a",3);
                     clienteTextfield.setText(null);
@@ -95,7 +99,7 @@ public class ViewDetalheVenda {
                 String quant = quantTextfield.getText();
                 String produtos = idTextfield.getText();
 
-                if(ControlRegisto.VerificarVenda("",quant, produtos,1) == 0){
+                if(ControlRegistro.verificarVenda("",quant, produtos,1) == 0){
                     idTextfield.setText(null);
                     quantTextfield.setText(null);
 
@@ -130,7 +134,13 @@ public class ViewDetalheVenda {
             }
         }
     };
-
+    
+    /**
+     * Construtor da ViewDetalheEletro
+     * 
+     * @param id String que serve para localizar a venda que foi selecionada na Jtable.
+     * @param controlador int que altera a forma que a janela sera apresentada.
+     */
     //construtor para quando clicar na tabela
     public ViewDetalheVenda(String id, int controlador) {
 
@@ -225,7 +235,10 @@ public class ViewDetalheVenda {
 
 
     }
-
+    
+    /**
+     * Metodo que organiza a janela de selecao de cliente em venda
+     */
     private void selecionaCliente(){
         MTableCliente dadosTabela = new MTableCliente(ControlCliente.dadosTabela(ControlCliente.getDadosR()));
         tabelaCliente.setModel(dadosTabela);
@@ -289,7 +302,10 @@ public class ViewDetalheVenda {
         janela2.setLocationRelativeTo(null);
 
     }
-
+    
+    /**
+     * Metodo que organiza a janela de selecao de produto em venda
+     */
     private void selecionaProduto(){
 
         MTableMovel dadosTabela1 = new MTableMovel(ControlEstoque.tabelaMovel());
@@ -419,7 +435,10 @@ public class ViewDetalheVenda {
         janela3.setSize(1135, 590);
         janela3.setLocationRelativeTo(null);
     }
-
+    
+    /**
+     * Metodo para organizar os labels e textfields da ViewDetalheVenda
+     */
     //metodo para organizar na janela os dados do cliente
     private void janelaVenda(){
 
@@ -495,30 +514,45 @@ public class ViewDetalheVenda {
         janela.add(valorFormaPagamento);
         valorFormaPagamento.setText(null);
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de sucesso apos concluir uma nova venda.
+     */
     private static void mensagemSucessoCadastro() {
         JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de sucesso apos uma adicao de um produto em venda.
+     */
     private static void mensagemSucessoCadastro1() {
         JOptionPane.showMessageDialog(null, "Produto adicionado com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de erro caso alguma irregularidade tenha ocorrido com a Venda.
+     */
     private static void mensagemErroVenda() {
         JOptionPane.showMessageDialog(null,
                 "NAO FORAM ADICIONADOS PRODUTOS NA VENDA!", null,
                 JOptionPane.ERROR_MESSAGE);
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de erro caso alguma irregularidade tenha ocorrido com CPF da venda.
+     */
     private static void mensagemErroCPF() {
         JOptionPane.showMessageDialog(null,
                 "CPF INVALIDO OU INEXISTENTE!", null,
                 JOptionPane.ERROR_MESSAGE);
     }
+    /**
+     * Metodo que exibe uma mensagem de erro caso alguma irregularidade tenha ocorrido com Produto.
+     */
     private static void mensagemErroProduto() {
         JOptionPane.showMessageDialog(null,
                 "ERRO AO ADICIONAR PRODUTO!\n" +

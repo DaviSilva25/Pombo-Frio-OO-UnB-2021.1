@@ -10,7 +10,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+ * Classe View Estoque
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public class ViewEstoque {
 
     //DECLARACAO
@@ -73,7 +77,11 @@ public class ViewEstoque {
             }
         }
     };
-
+    /**
+     * Construtor da classe ViewEstoque
+     * 
+     * @param a int que altera a forma que a janela sera apresentada.
+     */
     public ViewEstoque(int a){
 
         //DADOS DAS TABELAS
@@ -263,8 +271,11 @@ public class ViewEstoque {
         janela.add(painelMovel);
         janela.add(painelEletro);
 
-}
-
+    }
+    
+    /**
+     * Metodo que organiza os botoes da classe ViewCliente em um Jpanel.
+     */
     public void painelBotoes(){
 
         //DEFINICOES DO PAINEL

@@ -1,7 +1,7 @@
 package view;
 
 import controller.ControlCliente;
-import controller.ControlRegisto;
+import controller.ControlRegistro;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Classe View Detalhe do Cliente
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public class ViewDetalheCliente {
 
     //dados cliente
@@ -53,12 +57,12 @@ public class ViewDetalheCliente {
         @Override
         public void mouseClicked(MouseEvent e) {
 
-            //SALVAR MUDANÇAS EM UM CLIENTE EXISTENTE
+            //SALVAR MUDANCAS EM UM CLIENTE EXISTENTE
             if(e.getSource() == salvar) {
                 //verificacao dos dados digitados
-                if (ControlRegisto.VerificarCliente(dadosDigitados(),1) == 0
-                        && (ControlRegisto.VerificarCartao(dadosDigitados()) == 0
-                        ||  ControlRegisto.VerificarCartao(dadosDigitados()) == 4)){
+                if (ControlRegistro.verificarCliente(dadosDigitados(),1) == 0
+                        && (ControlRegistro.verificarCartao(dadosDigitados()) == 0
+                        ||  ControlRegistro.verificarCartao(dadosDigitados()) == 4)){
 
                     ControlCliente.alterarDadosCliente(ControlCliente.getDadosR(), valorCPF.getText(), ViewDetalheCliente.dadosDigitados());
                     mensagemSucessoCadastro();
@@ -73,9 +77,9 @@ public class ViewDetalheCliente {
             //SALVAR NOVO CLIENTE
             if(e.getSource() == salvar2) {
                 //verificacao dos dados digitados
-                if (ControlRegisto.VerificarCliente(dadosDigitados(),0) == 0
-                && (ControlRegisto.VerificarCartao(dadosDigitados()) == 0
-                ||  ControlRegisto.VerificarCartao(dadosDigitados()) == 4)){
+                if (ControlRegistro.verificarCliente(dadosDigitados(),0) == 0
+                && (ControlRegistro.verificarCartao(dadosDigitados()) == 0
+                ||  ControlRegistro.verificarCartao(dadosDigitados()) == 4)){
 
                     ControlCliente.adicionarCliente(dadosDigitados());
                     mensagemSucessoCadastro1();
@@ -101,6 +105,12 @@ public class ViewDetalheCliente {
         }
     };
 
+    /**
+     * Construtor da ViewDetalheCliente
+     * 
+     * @param cpf String que serve para localizar o cliente que foi selecionado na Jtable.
+     * @param controlador int que altera a forma que a janela sera apresentada. 
+     */
     //construtor para quando clicar na tabela
     public ViewDetalheCliente(String cpf, int controlador) {
 
@@ -200,7 +210,13 @@ public class ViewDetalheCliente {
 
 
     }
-
+    
+    /**
+     * Metodo que adiciona os dados digitados nos JtextFields da ViewDetalheCliente em uma lista
+     * de Strings para uso posterior na ControlCliente.
+     * 
+     * @return a lista de Strings com os dados dos JtextFields da ViewDetalheCliente.
+     */
     //metodo para pegar o dados digitados nos textfields
     public static List<String> dadosDigitados(){
         List<String> dadosNovos = new ArrayList<>();
@@ -221,7 +237,10 @@ public class ViewDetalheCliente {
 
         return dadosNovos;
     }
-
+    
+    /**
+     * Metodo para organizar os labels e textfields da ViewDetalheCliente
+     */
     //metodo para organizar na janela os dados do cliente
     private void janelaCliente(){
 
@@ -247,7 +266,10 @@ public class ViewDetalheCliente {
         janela.add(valorDataNasc);
         valorDataNasc.setText(null);
     }
-
+    
+    /**
+     * Metodo para organizar os labels e textfields da ViewDetalheCliente
+     */
     //metodo para organizar na janela o telefone do cliente
     private void janelaTelefone(){
 
@@ -262,7 +284,10 @@ public class ViewDetalheCliente {
         janela.add(valorTelefone);
         valorTelefone.setText(null);
     }
-
+    
+    /**
+     * Metodo para organizar os labels e textfields da ViewDetalheCliente
+     */
     //metodo para organizar na janela o endereco do cliente
     private void janelaEndereco(){
 
@@ -298,7 +323,10 @@ public class ViewDetalheCliente {
         janela.add(valorLogradouro);
         valorLogradouro.setText(null);
     }
-
+    
+    /**
+     * Metodo para organizar os labels e textfields da ViewDetalheCliente
+     */
     //metodo para organizar na janela o cartao do cliente
     private void janelaCartao(){
 
@@ -333,25 +361,37 @@ public class ViewDetalheCliente {
         janela.add(valorCVV);
         valorCVV.setText(null);
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de sucesso apos uma excluisao de cliente.
+     */
     private static void mensagemSucessoExclusao() {
         JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de sucesso apos uma alteracao em um cliente.
+     */
     private static void mensagemSucessoCadastro() {
         JOptionPane.showMessageDialog(null, "Cliente salvo com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de sucesso apos um cadastro de cliente.
+     */
     private static void mensagemSucessoCadastro1() {
         JOptionPane.showMessageDialog(null, "Novo cliente salvo com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de erro caso alguma irregularidade tenha ocorrido.
+     */
     private static void mensagemErroCadastro() {
         JOptionPane.showMessageDialog(null,
                 "ERRO AO SALVAR OS DADOS!\n" +

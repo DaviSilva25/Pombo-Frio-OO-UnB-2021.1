@@ -1,12 +1,24 @@
 package models;
-
+/**
+ * Classe modelo Cartao
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public class Cartao {
     //ATRIBUTOS PROPIOS
     private String nome;
     private String numero;
     private String cvv;
     private String dataVencimento;
-
+    
+    /**
+     * Construtor de cartao
+     * 
+     * @param nome String que representa o nome do cartao
+     * @param numero String que representa o numero do cartao
+     * @param cvv String que representa o cvv do cartao
+     * @param dataVencimento String que representa a data de vencimento do cartao
+     */
     //CONSTRUTORES CARTAO
     public Cartao(String nome, String numero, String cvv, String dataVencimento) {
         this.nome = nome;

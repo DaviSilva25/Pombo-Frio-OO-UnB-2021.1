@@ -1,12 +1,16 @@
 package models;
-
+/**
+ * Classe modelo Registro
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 import java.util.*;
 
 public class Registro {
     //ATRIBUTOS OBTIDOS A PARTIR DE OUTRAS CLASSES
     private Loja loja;
     private final Telefone telefoneLoja = new Telefone("061", "940028922");
-    private final Endereco enderecoLoja = new Endereco("DF", "Guará", "QE40", "Lote 10");
+    private final Endereco enderecoLoja = new Endereco("DF", "Guara", "QE40", "Lote 10");
     private final Estoque estoque = new Estoque();
     private List<Cliente> cliente = new ArrayList<>();
     private final List<Telefone> telefone = new ArrayList<>();
@@ -15,7 +19,12 @@ public class Registro {
     private final List<Movel> movel = new ArrayList<>();
     private final List<Eletrodomestico> eletro = new ArrayList<>();
     private final List<Venda> vendas = new ArrayList<>();
-
+    
+    /**
+     * Metodo que faz o carregamento dos dados do sistema.
+     *  
+     * @throws CloneNotSupportedException
+     */
     public void autoCadastro() throws CloneNotSupportedException {
 
         //ARRAYLISTS BASES PARA SERVIR DE PREENCHIMENTO NOS ATRIBUTOS
@@ -49,7 +58,7 @@ public class Registro {
             telefone.add(i, new Telefone("061", "984000"+(100+i)));
             endereco.add(i, new Endereco(""+siglas.get(ale.nextInt(26)), "Cidade"+(i+1), "Bairro"+(i+1), "Logradouro"+(i+1)));
             cliente.add(i, new Cliente(nomes.get(ale.nextInt(nomes.size()))+" "+sobrenomes.get(ale.nextInt(sobrenomes.size()))
-                    , "1234567"+(i+100)
+                    , "12345678"+(i+100)
                     ,((ale.nextInt(29)+1))+"/"+((ale.nextInt(12)+1))+"/"+((ale.nextInt(52)+1950)),
                     endereco.get(i), telefone.get(i), cartao.get(i)));
         }

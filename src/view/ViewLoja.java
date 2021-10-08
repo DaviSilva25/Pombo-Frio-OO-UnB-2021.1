@@ -1,7 +1,7 @@
 package view;
 
 import controller.ControlLoja;
-import controller.ControlRegisto;
+import controller.ControlRegistro;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Classe View Loja
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public class ViewLoja {
 
     //dados Loja
@@ -41,7 +45,7 @@ public class ViewLoja {
 
             //evento clique no botao salvar
             if(e.getSource() == salvar) {
-                if(ControlRegisto.VerificarLoja(dadosDigitados()) == 0){
+                if(ControlRegistro.verificarLoja(dadosDigitados()) == 0){
                     ControlLoja.alterarDadosLoja(dadosDigitados());
                     dadosLoja = dadosDigitados();
                     new ViewMenu();
@@ -54,7 +58,10 @@ public class ViewLoja {
             }
         }
     };
-
+    
+    /**
+     * Construtor da ViewLoja
+     */
     //metodo para organizar na janela os dados da loja
     public ViewLoja() {
 
@@ -133,7 +140,13 @@ public class ViewLoja {
         valorLogradouro.setText(dadosLoja.get(7));
         janela.add(valorLogradouro);
     }
-
+    
+    /**
+     * Metodo que adiciona os dados digitados nos JtextFields da ViewLoja em uma lista
+     * de Strings para uso posterior na ControlEstoque.
+     * 
+     * @return a lista de Strings com os dados dos JtextFields da ViewLoja.
+     */
     //metodo para pegar o dados digitados nos textfields
     public static List<String> dadosDigitados(){
         List<String> dadosNovos = new ArrayList<>();
@@ -148,7 +161,10 @@ public class ViewLoja {
 
         return dadosNovos;
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de erro caso alguma irregularidade tenha ocorrido.
+     */
     private static void mensagemErroCadastro() {
         JOptionPane.showMessageDialog(null,
                 "ERRO AO SALVAR OS DADOS!\n" +

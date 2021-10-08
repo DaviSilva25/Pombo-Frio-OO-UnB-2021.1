@@ -7,7 +7,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+ * Classe View Venda
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public class ViewVenda {
 
     private static final JFrame janela = new JFrame("VENDA");
@@ -56,7 +60,12 @@ public class ViewVenda {
             }
         }
     };
-
+    
+    /**
+     * Construtor da classe ViewVenda
+     * 
+     * @param a int que altera a forma que a janela sera apresentada.
+     */
     public ViewVenda(int a){
 
         //dados da tabela venda
@@ -131,7 +140,8 @@ public class ViewVenda {
             painel.add(scroll);
 
         }
-        //definicoes da janela        janela.setLayout(null);
+        //definicoes da janela
+        janela.setLayout(null);
         janela.setSize(930, 525);
         janela.setLocationRelativeTo(null);
         scroll.setBackground(new Color(101, 240, 154));
@@ -149,7 +159,7 @@ public class ViewVenda {
         painel.setBorder(BorderFactory.createLineBorder(new Color(101, 1, 154), 5));
         painel.setBounds(200, 25, 700, 450);
 
-        //DEFINIÇÕES DA TABELA
+        //DEFINICOES DA TABELA
         DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
         cellRenderer.setHorizontalAlignment(JLabel.CENTER);
         tabelaVenda.removeMouseListener(click);
@@ -189,7 +199,10 @@ public class ViewVenda {
         janela.add(painel);
 
     }
-
+    
+    /**
+     * Metodo que organiza os botoes da classe ViewVenda em um Jpanel.
+     */
     public void painelBotoes(){
 
         //DEFINICOES DO PAINEL

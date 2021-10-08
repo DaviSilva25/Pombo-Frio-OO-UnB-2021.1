@@ -2,12 +2,22 @@ package modelTables;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
-
+/**
+ * Classe MTableModel Movel
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
+@SuppressWarnings("serial")
 public class MTableMovel extends AbstractTableModel {
 
     private final String[] colunas = {"ID", "Nome", "Preco R$", "Quantidade", "Cor"};
     private static List<String[]> movelDados;
-
+    
+    /**
+     * Contrutor da MTableMovel
+     * 
+     * @param listaMovel List<String[]> representa a lista de array de Strings que irao compor a tabela.
+     */
     public MTableMovel(List<String[]> listaMovel){
         movelDados = listaMovel;
     }

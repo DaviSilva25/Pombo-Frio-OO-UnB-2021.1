@@ -2,7 +2,11 @@ package models;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.time.LocalDate;
-
+/**
+ * Classe modelo Venda
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 
 public class Venda {
 
@@ -22,7 +26,14 @@ public class Venda {
 
     //VARIAVEIS AUXILIARES
     private static int setaVenda = 1;
-
+    
+    /**
+     * Construtor de venda.
+     * 
+     * @param cliente Cliente que representa o cliente de venda.
+     * @param loja Loja que representa a loja de venda.
+     * @param formaDePagamento String que representa a forma de pagamendo de venda.
+     */
     //CONSTRUTORES VENDA
     public Venda(Cliente cliente, Loja loja, String formaDePagamento) {
         this.cliente = cliente;
@@ -31,8 +42,16 @@ public class Venda {
         this.setFormaDePagamento(formaDePagamento);
         this.setFrete();
     }
-
     //METODO(SOBRECARREGADO) EM ADIOCIONAR(MOVEL OU ELETRODOMESTISCO) EM VENDA
+    
+    /**
+     * Metodo que recebe um movel e uma quantidade, e apos isso adiciona
+     * a quantidade do movel e o movel em uma venda.
+     * 
+     * @param movel Movel que representa o movel que ia ser adiconado na venda.
+     * @param quantMovel int que representa a quantidade do movel a ser adicionada na venda.
+     * @throws CloneNotSupportedException
+     */
     public void adicionar(Movel movel, int quantMovel) throws CloneNotSupportedException {
 
         Movel movel1 = (Movel) movel.clone();
@@ -42,6 +61,15 @@ public class Venda {
 
         valorFinal += movel.getPreco()*quantMovel;
     }
+    
+    /**
+     * Metodo que recebe um eletrodomestico e uma quantidade, e apos isso adiciona
+     * a quantidade do eletrodomestico e o eletrodomestico em uma venda.
+     * 
+     * @param eletro Eletrodomestico que representa o eletrodomestico que ia ser adiconado na venda.
+     * @param quantEletro int que representa a quantidade do eletrodomestico a ser adicionada na venda.
+     * @throws CloneNotSupportedException
+     */
     public void adicionar(Eletrodomestico eletro, int quantEletro) throws CloneNotSupportedException {
 
         Eletrodomestico eletro1 = (Eletrodomestico) eletro.clone();

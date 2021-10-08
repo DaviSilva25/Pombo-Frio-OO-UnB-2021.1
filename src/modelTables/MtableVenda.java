@@ -2,13 +2,23 @@ package modelTables;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
-
+/**
+ * Classe MTableModel Venda
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
+@SuppressWarnings("serial")
 public class MtableVenda extends AbstractTableModel {
 
     private final String[] colunas = {"ID venda", "Nome Cliente", "CPF Cliente", "Loja",
                                       "Data da venda", "Valor Final R$"};
     private static List<String[]> vendaDados;
-
+    
+    /**
+     * Contrutor da MTableVenda
+     * 
+     * @param listaVenda List<String[]> representa a lista de array de Strings que irao compor a tabela.
+     */
     public MtableVenda(List<String[]> listaVenda){
         vendaDados = listaVenda;
     }

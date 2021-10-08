@@ -3,11 +3,21 @@ package modelTables;
 import javax.swing.table.AbstractTableModel;
 import java.util.Comparator;
 import java.util.List;
-
+/**
+ * Classe MTableModel Produtos
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
+@SuppressWarnings("serial")
 public class MTableProdutos extends AbstractTableModel {
     private final String[] colunas = {"ID", "Nome", "QTD", "Preco", "TIPO"};
     private static List<String[]> produtoDados;
-
+    
+    /**
+     * Contrutor da MTableProdutos
+     * 
+     * @param lista List<String[]> representa a lista de array de Strings que irao compor a tabela.
+     */
     public MTableProdutos(List<String[]> lista){
         lista.sort(Comparator.comparingInt(A -> Integer.parseInt(A[0])));
         produtoDados = lista;

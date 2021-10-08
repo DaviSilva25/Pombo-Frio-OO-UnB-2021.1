@@ -1,5 +1,9 @@
 package models;
-
+/**
+ * Classe modelo Cliente
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public class Cliente {
     //ATRIBUTOS PROPIOS
     private String nome;
@@ -8,7 +12,17 @@ public class Cliente {
     private Endereco endereco;
     private Telefone telefone;
     private Cartao cartao;
-
+    
+    /**
+     * Construtor de cliente
+     * 
+     * @param nome String que representa o nome do cliente
+     * @param cpf String que representa o cpf do cliente
+     * @param dataNascimento String que representa a data de nascimento do cliente
+     * @param endereco Endereco que representa o endereco do Cliente
+     * @param telefone Telefone que representa o endereco do Cliente
+     * @param cartao Cartao que representa o endereco do Cliente
+     */
     //CONSTRUTORES CLIENTE
     public Cliente(String nome, String cpf, String dataNascimento, Endereco endereco,Telefone telefone, Cartao cartao) {
         this.nome = nome;

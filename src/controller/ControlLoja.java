@@ -2,14 +2,26 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Classe para controle das acoes relacionadas a loja
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
+@SuppressWarnings("static-access")
 public class ControlLoja {
-
+	
     private static final List<String> dadosLoja = new ArrayList<>();
-
+    /**
+     * Construtor de ControlLoja
+     */
     public ControlLoja() {
     }
-
+    /**
+     * Metodo que armazena os dados referentes a loja cadastrada no sistema em uma lista
+     *  de strings para uso posterior na ViewLoja.
+     * 
+     * @return a lista de Strings que contem os dados referentes a loja.
+     */
     //METODO PARA ADQUIRIR O DADOS PARA A TELA DE UM CLIENTE
     public static List<String> pegarDadosLoja() {
         dadosLoja.add(ControlCliente.getDadosR().getDados().getLoja().getNome());
@@ -23,10 +35,16 @@ public class ControlLoja {
 
         return dadosLoja;
     }
-
+    
+    /**
+     * Metodo que recebe uma lista de strings e apos isso substitui os dados existentes
+     * da loja cadastrada no sistema pelos dados da lista.
+     * 
+     * @param dadosLoja a lista de Strings que contem os novos dados de loja.
+     */
     //METODO PARA ALTERAR O DADOS DA TELA DA LOJA
-    public static void alterarDadosLoja(List<String> dadosCliente){
-        List<String> alteraDados = new ArrayList<>(dadosCliente);
+    public static void alterarDadosLoja(List<String> dadosLoja){
+        List<String> alteraDados = new ArrayList<>(dadosLoja);
 
         ControlCliente.getDadosR().getDados().getLoja().setNome(alteraDados.get(0));
         ControlCliente.getDadosR().getDados().getLoja().setCnpj(alteraDados.get(1));

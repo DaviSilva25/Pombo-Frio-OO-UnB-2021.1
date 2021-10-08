@@ -1,7 +1,7 @@
 package view;
 
 import controller.ControlEstoque;
-import controller.ControlRegisto;
+import controller.ControlRegistro;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Classe View Detalhe Eletro
+ * @author Davi e Karla
+ * @version 1.0 (Oct/21)
+ */
 public class ViewDetalheEletro {
 
     //labels e textfields de eletrodomesticos
@@ -45,11 +49,11 @@ public class ViewDetalheEletro {
         @Override
         public void mouseClicked(MouseEvent e) {
 
-            //SALVAR MUDANÇAS EM UM ELETRODOMESTICO EXISTENTE
+            //SALVAR MUDANCAS EM UM ELETRODOMESTICO EXISTENTE
             if(e.getSource() == salvar) {
 
                 //verificacao dos dados digitados
-                if (ControlRegisto.VerificarEstoque(dadosDigitados(),1) == 0){
+                if (ControlRegistro.verificarEstoque(dadosDigitados(),1) == 0){
 
                     ControlEstoque.alterarDadosEletro(valorId.getText(), ViewDetalheEletro.dadosDigitados());
                     mensagemSucessoCadastro();
@@ -64,7 +68,7 @@ public class ViewDetalheEletro {
             if(e.getSource() == salvar2) {
 
                 //verificacao dos dados digitados
-                if (ControlRegisto.VerificarEstoque(dadosDigitados(),1) == 0){
+                if (ControlRegistro.verificarEstoque(dadosDigitados(),1) == 0){
 
                     ControlEstoque.adicionarEletro(dadosDigitados());
                     mensagemSucessoCadastro1();
@@ -93,7 +97,12 @@ public class ViewDetalheEletro {
         }
     };
 
-
+    /**
+     * Construtor da ViewDetalheEletro
+     * 
+     * @param id String que serve para localizar o Eletrodomestico que foi selecionado na Jtable.
+     * @param controlador int que altera a forma que a janela sera apresentada.
+     */
     public ViewDetalheEletro(String id, int controlador){
 
         //preenche a lista de Strings com os dados do eletrodomestico que tem o id do parametro do construtor
@@ -176,7 +185,12 @@ public class ViewDetalheEletro {
 
 
     }
-
+    /**
+     * Metodo que adiciona os dados digitados nos JtextFields da ViewDetalheEletro em uma lista
+     * de Strings para uso posterior na ControlEstoque.
+     * 
+     * @return a lista de Strings com os dados dos JtextFields da ViewDetalheEletro.
+     */
     //metodo para pegar o dados digitados nos textfields
     public static List<String> dadosDigitados(){
 
@@ -195,7 +209,10 @@ public class ViewDetalheEletro {
 
         return dadosNovos;
     }
-
+    
+    /**
+     * Metodo para organizar os labels e textfields da ViewDetalheEletro
+     */
     //metodo para organizar na janela os dados do eletrodomestico
     private void janelaEletrodomestico(){
 
@@ -277,25 +294,37 @@ public class ViewDetalheEletro {
         janela.add(valorPotencia);
         valorPotencia.setText(null);
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de sucesso apos uma excluisao de eletrodomestico.
+     */
     private static void mensagemSucessoExclusao() {
         JOptionPane.showMessageDialog(null, "Eletrodomestico excluido com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de sucesso apos uma alteracao em um eletrodomestico.
+     */
     private static void mensagemSucessoCadastro() {
         JOptionPane.showMessageDialog(null, "Eletrodomestico salvo com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
 
+    /**
+     * Metodo que exibe uma mensagem de sucesso apos um cadastro de eletrodomestico.
+     */
     private static void mensagemSucessoCadastro1() {
         JOptionPane.showMessageDialog(null, "Novo eletrodomestico salvo com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
-
+    
+    /**
+     * Metodo que exibe uma mensagem de erro caso alguma irregularidade tenha ocorrido.
+     */
     private static void mensagemErroCadastro() {
         JOptionPane.showMessageDialog(null,
                         "ERRO AO SALVAR OS DADOS!\n" +
