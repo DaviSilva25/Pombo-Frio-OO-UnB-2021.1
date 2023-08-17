@@ -10,7 +10,7 @@
  <a href="#-layout">Layout</a> • 
  <a href="#-como-executar-o-projeto">Como executar</a> • 
  <a href="#-tecnologias">Tecnologias</a> • 
- <a href="#-autores">Autores</a> • 
+ <a href="#-autores">Autores</a>
 </p>
 
 
