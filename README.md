@@ -126,6 +126,8 @@ java -version
 
 Passo 6: Configurar a sua IDE com o jdk instalado, após isto é só executar o aqui ViewMenu.java que o programa ir ser executado. :D
 
+## Agradecimentos ❤
 
-
-
+- Um agradecimento à Universidade de Brasília por proporcionar uma excelente oportunidade de aprendizado, mesclando a teoria e prática com extrema maestria
+- Um agradecimento ao canal do youtube [Bro Code](https://www.youtube.com/watch?v=xk4_1vDrzzo&t=37478s)
+- Um agradecimento especial a professora Fabiana Freitas Mendes por ter ministrado de forma exemplar a disciplina, sempre se colocando a disposição para auxiliar os alunos.
