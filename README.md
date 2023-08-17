@@ -43,8 +43,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 <table>
   <tr>
-    <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/79341819?v=4" width="100px;" alt=""/><br /><sub><b>Davi Lima da Silva</b></sub></a><br /><a href="https://rocketseat.com.br/" title="Rocketseat">👨‍🚀</a></td>
-    <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/78981063?v=4" width="100px;" alt=""/><br /><sub><b>Karla Chaiane Feliciano </b></sub></a><br /><a href="https://rocketseat.com.br/" title="Rocketseat">👨‍🚀</a></td>
+    <td align="center"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/79341819?v=4" width="100px;" alt=""/><br /><sub><b>Davi Lima da Silva</b></sub></a><br />👨‍🚀</a></td>
+    <td align="center"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/78981063?v=4" width="100px;" alt=""/><br /><sub><b>Karla Chaiane Feliciano </b></sub></a><br />👨‍🚀</a></td>
     
   </tr>
 </table>
@@ -73,9 +73,15 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ### Local
 
 
-<p align="left" style="display: flex; align-items: flex-start; justify-content: right;">
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="https://github.com/DaviSilva25/Pombo-Frio-OO-UnB-2021.1/assets/79341819/4896bf4f-0e82-4f0d-82e8-6323f116d519" width="400px" height="700px">
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="https://github.com/DaviSilva25/Pombo-Frio-OO-UnB-2021.1/assets/79341819/b17a5e3c-b28e-44a2-af39-d78e24c0d818" width="600px" height="700px">
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="NextLevelWeek" title="#NextLevelWeek" src="https://github.com/DaviSilva25/Pombo-Frio-OO-UnB-2021.1/assets/79341819/4896bf4f-0e82-4f0d-82e8-6323f116d519" width="400px" height="530px">
+  <img alt="NextLevelWeek" title="#NextLevelWeek" src="https://github.com/DaviSilva25/Pombo-Frio-OO-UnB-2021.1/assets/79341819/849b99a1-8460-4dc1-8329-f94d5341cd17" width="400px" height="530px">
+</p>
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="NextLevelWeek" title="#NextLevelWeek" src="https://github.com/DaviSilva25/Pombo-Frio-OO-UnB-2021.1/assets/79341819/f0078ead-a11a-4120-897f-624c0de92391" width="800px">
+  <img alt="NextLevelWeek" title="#NextLevelWeek" src="https://github.com/DaviSilva25/Pombo-Frio-OO-UnB-2021.1/assets/79341819/926f6644-1213-4d37-93ba-31a9ddf55eeb" width="800px">
+  <img alt="NextLevelWeek" title="#NextLevelWeek" src="https://github.com/DaviSilva25/Pombo-Frio-OO-UnB-2021.1/assets/79341819/f33b8b68-d75b-4a6c-9667-37ec33cab264" width="800px">
 </p>
 
 ---
